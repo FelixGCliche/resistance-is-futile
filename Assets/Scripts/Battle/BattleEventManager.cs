@@ -8,9 +8,13 @@ public class BattleEventManager : MonoBehaviour
 {
     public static BattleEventManager current;
 
+    private List<int> battleQueue;
+
     private void Awake()
     {
         current = this;
+        battleQueue = new List<int>();
+        FillBattleQueue();
     }
 
     public event Action<Attack> onAttack;
@@ -18,5 +22,20 @@ public class BattleEventManager : MonoBehaviour
     public void OnAttack(Attack attack)
     {
         onAttack?.Invoke(attack);
+        battleQueue.Add(battleQueue[0]);
+        battleQueue.RemoveAt(0);
+    }
+
+    private void FillBattleQueue(int CharacterOneSpeed = 0, int CharacterTwoSpeed = 0, int CharacterThreeSpeed = 0,
+                                 int CharacterFourSpeed = 0, int CharacterFiveSpeed = 0, int CharacterSixSpeed = 0)
+    {
+        //Need to add priority system
+        battleQueue.Add(1);
+        battleQueue.Add(4);
+    }
+
+    public int GetCurrentAttackerId()
+    {
+        return battleQueue[0];
     }
 }
