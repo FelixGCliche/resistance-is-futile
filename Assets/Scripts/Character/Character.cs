@@ -1,4 +1,8 @@
 using Equipment;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -8,25 +12,34 @@ public class Character : MonoBehaviour
     [SerializeField] private Damage damage;
     [SerializeField] private int playerId = 1;
     [SerializeField] private KeyCode attackKey = KeyCode.Q;
+    [SerializeField] private bool isPlayer = true;
 
     private CharacterEquipementManager currentEquipement;
-
-    private void OnEnable()
-    {
-        BattleEventManager.current.onAttack += onAttack;
-    }
 
     // Start is called before the first frame update
     void Start()
     {
+        BattleEventManager.current.onAttack += onAttack;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(attackKey))
+        if (BattleEventManager.current.GetCurrentAttackerId() == playerId)
         {
-            AttackCharacter(1);
+            if (isPlayer)
+            {
+                //Adapt to different player attack
+                if (Input.GetKeyDown(attackKey))
+                {
+                    AttackCharacter(4);
+                }
+            }
+            else
+            {
+                //Need enemy Ai
+                AttackCharacter(1);
+            }
         }
     }
 
