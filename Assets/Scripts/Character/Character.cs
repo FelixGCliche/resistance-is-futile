@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Equipment;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -10,6 +11,8 @@ public class Character : MonoBehaviour
     [SerializeField] private Damage damage;
     [SerializeField] private int playerId = 1;
     [SerializeField] private KeyCode attackKey = KeyCode.Q;
+
+    private CharacterEquipementManager currentEquipement;
 
     private void OnEnable()
     {
