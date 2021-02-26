@@ -23,14 +23,14 @@ public class BattleEventManager : MonoBehaviour
     {
         onAttack?.Invoke(attack);
         battleQueue.Add(battleQueue[0]);
-        battleQueue.Remove(0);
+        battleQueue.RemoveAt(0);
     }
 
     private void FillBattleQueue(int CharacterOneSpeed = 0, int CharacterTwoSpeed = 0, int CharacterThreeSpeed = 0,
                                  int CharacterFourSpeed = 0, int CharacterFiveSpeed = 0, int CharacterSixSpeed = 0)
     {
         battleQueue.Add(1);
-        battleQueue.Add(2);
+        battleQueue.Add(4);
     }
 
     public int GetCurrentAttackerId()

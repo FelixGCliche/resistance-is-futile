@@ -28,7 +28,7 @@ public class Character : MonoBehaviour
             {
                 if (Input.GetKeyDown(attackKey))
                 {
-                    AttackCharacter(2);
+                    AttackCharacter(4);
                 }
             }
             else
