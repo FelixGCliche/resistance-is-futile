@@ -24,7 +24,7 @@ public class Vitality : MonoBehaviour
     {
         health += value;
         
-        if (health < 0)
+        if (health <= 0)
         {
             
         }
