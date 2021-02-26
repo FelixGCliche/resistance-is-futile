@@ -29,6 +29,7 @@ public class BattleEventManager : MonoBehaviour
     private void FillBattleQueue(int CharacterOneSpeed = 0, int CharacterTwoSpeed = 0, int CharacterThreeSpeed = 0,
                                  int CharacterFourSpeed = 0, int CharacterFiveSpeed = 0, int CharacterSixSpeed = 0)
     {
+        //Need to add priority system
         battleQueue.Add(1);
         battleQueue.Add(4);
     }

@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
         {
             if (isPlayer)
             {
+                //Adapt to different player attack
                 if (Input.GetKeyDown(attackKey))
                 {
                     AttackCharacter(4);
@@ -33,6 +34,7 @@ public class Character : MonoBehaviour
             }
             else
             {
+                //Need enemy Ai
                 AttackCharacter(1);
             }
         }
