@@ -19,4 +19,9 @@ public class Damage : MonoBehaviour
     {
         
     }
+
+    int getDamage()
+    {
+        return damage;
+    }
 }

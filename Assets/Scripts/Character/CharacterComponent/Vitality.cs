@@ -19,4 +19,17 @@ public class Vitality : MonoBehaviour
     {
         
     }
+
+    void UpdateHealth(int value)
+    {
+        health += value;
+        
+        if (health < 0)
+        {
+            
+        }
+        else if (health > maxHealth)
+            health = maxHealth;
+            
+    }
 }
