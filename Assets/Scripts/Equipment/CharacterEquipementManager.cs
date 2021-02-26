@@ -12,37 +12,74 @@ namespace Equipment
     private IEquippable ring;
     private IWeapon weapon;
 
+    private int equipementSpeedBoost;
+    private int equipementStrengthBoost;
+    private int equipementDexterityBoost;
+    private int equipementIntelligenceBoost;
+    private float equipementCriticalChanceBoost;
+    private float equipementDodgeChanceBoost;
+    private int equipementPhysicalArmorBoost;
+    private int equipementMagicArmorBoost;
+
+    public int EquipementSpeedBoost => equipementSpeedBoost;
+    public int EquipementStrengthBoost => equipementStrengthBoost;
+    public int EquipementDexterityBoost => equipementDexterityBoost;
+    public int EquipementIntelligenceBoost => equipementIntelligenceBoost;
+    public float EquipementCriticalChanceBoost => equipementCriticalChanceBoost;
+    public float EquipementDodgeChanceBoost => equipementDodgeChanceBoost;
+    public int EquipementPhysicalArmorBoost => equipementPhysicalArmorBoost;
+    public int EquipementMagicArmorBoost => equipementMagicArmorBoost;
+
     public void SwapEquipement(IEquippable newEquippable)
     {
       switch (newEquippable.Type)
       {
         case EquipementType.HELMET:
           helmet = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.CHESTPIECE:
           chestPiece = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.GREAVES:
           greaves = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.BOOTS:
           boots = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.NECKLACE:
           necklace = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.RING:
           ring = newEquippable;
+          UpdateBoosts();
           break;
         case EquipementType.WEAPON:
           weapon = (IWeapon) newEquippable;
+          UpdateBoosts();
           break;
       }
     }
 
-    public int GetEquipementSpeedBoost()
+    private void UpdateBoosts()
     {
-      return helmet.SpeedBoost + 
+      GetEquipementSpeedBoost();
+      GetEquipementDexterityBoost();
+      GetEquipementStrengthBoost();
+      GetEquipementIntelligenceBoost();
+      GetEquipementDodgeChanceBoost();
+      GetEquipementCriticalChanceBoost();
+      GetEquipementPhysicalArmorBoost();
+      GetEquipementMagicArmorBoost();
+    }
+
+    public void GetEquipementSpeedBoost()
+    {
+      equipementSpeedBoost = helmet.SpeedBoost + 
              chestPiece.SpeedBoost + 
              greaves.SpeedBoost + 
              boots.SpeedBoost + 
@@ -51,9 +88,9 @@ namespace Equipment
              weapon.SpeedBoost;
     }
 
-    public int GetEquipementStrengthBoost()
+    public void GetEquipementStrengthBoost()
     {
-      return helmet.StrengthBoost + 
+      equipementStrengthBoost = helmet.StrengthBoost + 
              chestPiece.StrengthBoost + 
              greaves.StrengthBoost + 
              boots.StrengthBoost + 
@@ -62,9 +99,9 @@ namespace Equipment
              weapon.StrengthBoost;
     }
 
-    public int GetEquipementDexterityBoost()
+    public void GetEquipementDexterityBoost()
     {
-      return helmet.DexterityBoost + 
+      equipementDexterityBoost = helmet.DexterityBoost + 
              chestPiece.DexterityBoost + 
              greaves.DexterityBoost + 
              boots.DexterityBoost + 
@@ -73,9 +110,9 @@ namespace Equipment
              weapon.DexterityBoost;
     }
 
-    public int GetEquipementIntelligenceBoost()
+    public void GetEquipementIntelligenceBoost()
     {
-      return helmet.IntelligenceBoost + 
+      equipementIntelligenceBoost = helmet.IntelligenceBoost + 
              chestPiece.IntelligenceBoost + 
              greaves.IntelligenceBoost + 
              boots.IntelligenceBoost + 
@@ -84,9 +121,9 @@ namespace Equipment
              weapon.IntelligenceBoost;
     }
 
-    public int GetEquipementDodgeChanceBoost()
+    public void GetEquipementDodgeChanceBoost()
     {
-      return helmet.DodgeChanceBoost + 
+      equipementDodgeChanceBoost = helmet.DodgeChanceBoost + 
              chestPiece.DodgeChanceBoost + 
              greaves.DodgeChanceBoost + 
              boots.DodgeChanceBoost + 
@@ -95,9 +132,9 @@ namespace Equipment
              weapon.DodgeChanceBoost;
     }
 
-    public int GetEquipementCriticalChanceBoost()
+    public void GetEquipementCriticalChanceBoost()
     {
-      return helmet.CriticalChanceBoost + 
+      equipementCriticalChanceBoost = helmet.CriticalChanceBoost + 
              chestPiece.CriticalChanceBoost + 
              greaves.CriticalChanceBoost + 
              boots.CriticalChanceBoost + 
@@ -106,9 +143,9 @@ namespace Equipment
              weapon.CriticalChanceBoost;
     }
 
-    public int GetEquipementPhysicalArmorBoost()
+    public void GetEquipementPhysicalArmorBoost()
     {
-      return helmet.PhysicalArmorBoost + 
+      equipementPhysicalArmorBoost = helmet.PhysicalArmorBoost + 
              chestPiece.PhysicalArmorBoost + 
              greaves.PhysicalArmorBoost + 
              boots.PhysicalArmorBoost + 
@@ -117,9 +154,9 @@ namespace Equipment
              weapon.PhysicalArmorBoost;
     }
 
-    public int GetEquipementMagicArmorBoost()
+    public void GetEquipementMagicArmorBoost()
     {
-      return helmet.MagicArmorBoost+ 
+      equipementMagicArmorBoost = helmet.MagicArmorBoost+ 
              chestPiece.MagicArmorBoost+ 
              greaves.MagicArmorBoost+ 
              boots.MagicArmorBoost+ 
