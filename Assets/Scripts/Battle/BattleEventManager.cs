@@ -17,7 +17,6 @@ public class BattleEventManager : MonoBehaviour
 
     public void OnAttack(Attack attack)
     {
-        if (onAttack != null)
-            onAttack(attack);
+        onAttack?.Invoke(attack);
     }
 }
