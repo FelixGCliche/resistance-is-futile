@@ -7,7 +7,8 @@ namespace Equipment
     GREAVES,
     BOOTS,
     WEAPON,
-    ARTIFACT,
+    NECKLACE,
+    RING,
     NONE
   }
 }

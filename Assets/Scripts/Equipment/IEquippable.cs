@@ -10,9 +10,9 @@ namespace Equipment
     int StrengthBoost { get; }
     int DexterityBoost { get; }
     int IntelligenceBoost { get; }
-    int CritChanceBoost { get; }
     int DodgeChanceBoost { get; }
-    
+    int CriticalChanceBoost { get; }
+
     int MagicArmorBoost { get; }
     int PhysicalArmorBoost { get; }
     int VitalityBoost { get; }
