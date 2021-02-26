@@ -134,5 +134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   level: 1
-  vitality: {fileID: 0}
-  damage: {fileID: 0}
+  vitality: {fileID: 7034680292792645841}
+  damage: {fileID: 6475266011052116357}
+  playerId: 1

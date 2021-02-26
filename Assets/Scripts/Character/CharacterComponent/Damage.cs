@@ -20,7 +20,7 @@ public class Damage : MonoBehaviour
         
     }
 
-    int getDamage()
+    public int getDamage()
     {
         return damage;
     }

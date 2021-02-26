@@ -20,16 +20,27 @@ public class Vitality : MonoBehaviour
         
     }
 
-    void UpdateHealth(int value)
+    public void ReceiveAttack(Attack attack)
     {
-        health += value;
+        health -= attack.damageValue;
+        
+        Debug.Log(health);
         
         if (health <= 0)
         {
-            
+            Debug.Log("You are dead");
         }
-        else if (health > maxHealth)
+            
+    }
+
+    public void Heal(int value)
+    {
+        health += value;
+        
+        if (health >= maxHealth)
+        {
             health = maxHealth;
+        }
             
     }
 }
