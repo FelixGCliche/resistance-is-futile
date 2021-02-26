@@ -9,6 +9,7 @@ public class Character : MonoBehaviour
     [SerializeField] private Vitality vitality;
     [SerializeField] private Damage damage;
     [SerializeField] private int playerId = 1;
+    [SerializeField] private KeyCode attackKey = KeyCode.Q;
 
     private void OnEnable()
     {
@@ -23,7 +24,10 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(attackKey))
+        {
+            AttackCharacter(1);
+        }
     }
 
     private void onAttack(Attack attack)
@@ -32,9 +36,9 @@ public class Character : MonoBehaviour
             vitality.ReceiveAttack(attack);
     }
 
-    private void Attack()
+    void AttackCharacter(int target)
     {
-        Attack attack = new Attack(1, damage.getDamage());
+        Attack attack = new Attack(target, damage.getDamage());
         BattleEventManager.current.OnAttack(attack);
     }
 }

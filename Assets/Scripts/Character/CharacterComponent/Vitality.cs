@@ -24,9 +24,11 @@ public class Vitality : MonoBehaviour
     {
         health -= attack.damageValue;
         
+        Debug.Log(health);
+        
         if (health <= 0)
         {
-            
+            Debug.Log("You are dead");
         }
             
     }
