@@ -1,3 +1,4 @@
+using Equipment;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +13,8 @@ public class Character : MonoBehaviour
     [SerializeField] private int playerId = 1;
     [SerializeField] private KeyCode attackKey = KeyCode.Q;
     [SerializeField] private bool isPlayer = true;
+
+    private CharacterEquipementManager currentEquipement;
 
     // Start is called before the first frame update
     void Start()
