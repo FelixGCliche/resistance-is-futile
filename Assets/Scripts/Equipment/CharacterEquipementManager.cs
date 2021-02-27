@@ -30,6 +30,8 @@ namespace Equipment
     public int EquipementPhysicalArmorBoost => equipementPhysicalArmorBoost;
     public int EquipementMagicArmorBoost => equipementMagicArmorBoost;
 
+    public IWeapon Weapon => weapon;
+
     public void SwapEquipement(IEquippable newEquippable)
     {
       switch (newEquippable.Type)
