@@ -12,6 +12,12 @@ namespace Factory
             int[] statsArray = GetRandomStatsArray(level);
             return new Equipement(GetEquipementType(), level, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
         }
+        
+        public static Equipement CreateNewEquipementWithType(int level, EquipementType type)
+        {
+            int[] statsArray = GetRandomStatsArray(level);
+            return new Equipement(type, level, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
+        }
 
         private static EquipementType GetEquipementType()
         {
