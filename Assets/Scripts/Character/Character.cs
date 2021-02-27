@@ -16,14 +16,25 @@ public class Character : MonoBehaviour
   public CharacterEquipementManager CurrentEquipement => currentEquipement;
   public bool IsDead => stats.IsDead;
 
+  public Character(CharacterStats stats, CharacterEquipementManager currentEquipement)
+  {
+    this.stats = stats;
+    this.currentEquipement = currentEquipement;
+  }
+
   private void Awake()
   {
     currentEquipement.SwapEquipementWithoutStatUpdate(WeaponFactory.CreateNewWeapon(1));
-    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.RING));
-    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.BOOTS));
-    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.HELMET));
-    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.GREAVES));
-    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.NECKLACE));
+    currentEquipement.SwapEquipementWithoutStatUpdate(
+      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.RING));
+    currentEquipement.SwapEquipementWithoutStatUpdate(
+      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.BOOTS));
+    currentEquipement.SwapEquipementWithoutStatUpdate(
+      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.HELMET));
+    currentEquipement.SwapEquipementWithoutStatUpdate(
+      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.GREAVES));
+    currentEquipement.SwapEquipementWithoutStatUpdate(
+      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.NECKLACE));
     currentEquipement.SwapEquipement(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.CHESTPIECE));
   }
 
@@ -33,7 +44,6 @@ public class Character : MonoBehaviour
     if (isPlayer)
       BattleEventManager.current.characters[playerId] = this;
     BattleEventManager.current.onAttack += OnDefend;
-    
   }
 
   // Update is called once per frame
@@ -79,17 +89,16 @@ public class Character : MonoBehaviour
   private int GetTotalDamage(Attack attack, bool isCriticalHit)
   {
     int totalDamage = 0;
-    
+
     if (IsHit())
     {
       totalDamage = attack.DamageValue;
-      
+
       if (isCriticalHit)
         totalDamage *= 2;
 
       if (attack.DamageType == DamageType.PHYSICAL)
         totalDamage -= stats.PhysicalArmor;
-
       else if (attack.DamageType == DamageType.MAGIC)
         totalDamage -= stats.MagicArmor;
     }
@@ -99,7 +108,7 @@ public class Character : MonoBehaviour
 
   private bool IsHit()
   {
-    return Random.Range(0.0f ,100.0f) <= stats.DodgeChance;
+    return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
     // Mettre event rétroaction "Evade"
   }
 }
