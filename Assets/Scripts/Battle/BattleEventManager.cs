@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq.Expressions;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BattleEventManager : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class BattleEventManager : MonoBehaviour
         current = this;
         characters = new Character[6];
         battleQueue = new List<int>();
+    }
+
+    private void Start()
+    {
         NewBattle();
     }
 
@@ -34,7 +39,7 @@ public class BattleEventManager : MonoBehaviour
 
     private void NewBattle()
     {
-        for (int i = 4; i < 7; i++)
+        for (int i = 3; i < 6; i++)
         {
             characters[i] = Instantiate(baseEnemy, Vector3.zero, Quaternion.identity);
             characters[i].playerId = i;
@@ -43,16 +48,31 @@ public class BattleEventManager : MonoBehaviour
         FillBattleQueue();
     }
 
-    private void FillBattleQueue(int CharacterOneSpeed = 0, int CharacterTwoSpeed = 0, int CharacterThreeSpeed = 0,
-                                 int CharacterFourSpeed = 0, int CharacterFiveSpeed = 0, int CharacterSixSpeed = 0)
+    private void FillBattleQueue()
     {
-        //Need to add priority system
-        battleQueue.Add(1);
-        battleQueue.Add(2);
-        battleQueue.Add(3);
-        battleQueue.Add(4);
-        battleQueue.Add(5);
-        battleQueue.Add(6);
+        for (int i = 0; i < 6; i++)
+        {
+            if(characters[i] != null && !characters[i].IsDead)
+                battleQueue.Add(i+1);
+        }
+
+        for (int i = 1; i < 6; i++)
+        {
+            int iSpeed = characters[battleQueue[i]-1].Stats.Speed;
+            for (int j = i-1; j >= 0; j--)
+            {
+                int jSpeed = characters[battleQueue[j]-1].Stats.Speed;
+                if (iSpeed > jSpeed || (iSpeed == jSpeed && Random.Range(1,3) == 1))
+                {
+                    battleQueue.Insert(j, battleQueue[i]);
+                    battleQueue.RemoveAt(i+1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
     }
 
     public int GetCurrentAttackerId()
