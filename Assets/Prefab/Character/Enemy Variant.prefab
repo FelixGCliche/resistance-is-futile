@@ -53,7 +53,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6684674590298895152, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: maxHealth
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8439359690699512972, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: isPlayer
