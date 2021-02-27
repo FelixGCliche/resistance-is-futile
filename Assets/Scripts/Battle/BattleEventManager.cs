@@ -53,15 +53,15 @@ public class BattleEventManager : MonoBehaviour
         for (int i = 0; i < 6; i++)
         {
             if(characters[i] != null && !characters[i].IsDead)
-                battleQueue.Add(i+1);
+                battleQueue.Add(i);
         }
 
         for (int i = 1; i < 6; i++)
         {
-            int iSpeed = characters[battleQueue[i]-1].Stats.Speed;
+            int iSpeed = characters[battleQueue[i]].Stats.Speed;
             for (int j = i-1; j >= 0; j--)
             {
-                int jSpeed = characters[battleQueue[j]-1].Stats.Speed;
+                int jSpeed = characters[battleQueue[j]].Stats.Speed;
                 if (iSpeed > jSpeed || (iSpeed == jSpeed && Random.Range(1,3) == 1))
                 {
                     battleQueue.Insert(j, battleQueue[i]);

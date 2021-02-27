@@ -1,4 +1,5 @@
 using Equipment;
+using Factory;
 using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,19 +14,30 @@ public class Character : MonoBehaviour
   private CharacterStats stats;
 
   public CharacterStats Stats => stats;
+
+  public CharacterEquipementManager CurrentEquipement => currentEquipement;
   public bool IsDead => stats.IsDead;
 
   private void Awake()
   {
     stats = gameObject.AddComponent<CharacterStats>();
+    currentEquipement = gameObject.AddComponent<CharacterEquipementManager>();
+    currentEquipement.SwapEquipementWithoutStatUpdate(WeaponFactory.CreateNewWeapon(1));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.RING));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.BOOTS));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.HELMET));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.GREAVES));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.NECKLACE));
+    currentEquipement.SwapEquipement(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.CHESTPIECE));
   }
 
   // Start is called before the first frame update
   void Start()
   {
     if (isPlayer)
-      BattleEventManager.current.characters[playerId - 1] = this;
+      BattleEventManager.current.characters[playerId] = this;
     BattleEventManager.current.onAttack += OnDefend;
+    
   }
 
   // Update is called once per frame
@@ -38,25 +50,26 @@ public class Character : MonoBehaviour
         //Adapt to different player attack
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-          Debug.Log("Player " + playerId + " attacks player " + 4);
-          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(4));
+          Debug.Log("Player " + playerId + " attacks player " + 3);
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(3));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-          Debug.Log("Player " + playerId + " attacks player " + 5);
-          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(5));
+          Debug.Log("Player " + playerId + " attacks player " + 4);
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(4));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-          Debug.Log("Player " + playerId + " attacks player " + 6);
-          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(6));
+          Debug.Log("Player " + playerId + " attacks player " + 5);
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(5));
         }
       }
       else
       {
         //Need enemy Ai
-        Debug.Log("Player " + playerId + " attacks player " + 1);
-        BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(Random.Range(1, 4)));
+        int target = Random.Range(0, 3);
+        Debug.Log("Player " + playerId + " attacks player " + target);
+        BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(target));
       }
     }
   }
