@@ -82,8 +82,11 @@ public class BattleEventManager : MonoBehaviour
 
     public void KillTarget(int target)
     {
-        battleQueue.Remove(target - 1);
-        characters[target-1].Die();
+        foreach (Character character in characters)
+        {
+            if (character.IsDead)
+                battleQueue.Remove(character.playerId);
+        }
         
         if(characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
             EndBattle();

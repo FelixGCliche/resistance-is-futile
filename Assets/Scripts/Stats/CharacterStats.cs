@@ -1,7 +1,5 @@
-using System.Collections;
 using Equipment;
 using UnityEngine;
-using Random = System.Random;
 
 namespace Stats
 {
@@ -11,6 +9,7 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int level = 1;
 
     [SerializeField] [Range(0, 100)] private int vitality = 1;
+    [SerializeField] private int maxVitality = 1;
 
     [SerializeField] [Range(0, 100)] private int speed = 1;
     [SerializeField] [Range(0, 100)] private int dexterity = 1;
@@ -24,7 +23,7 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
 
     public int Experience => experience;
-    public int Level => Level;
+    public int Level => level;
     public int Vitality => vitality;
     public int Speed => speed;
     public int Dexterity => dexterity;
@@ -35,34 +34,13 @@ namespace Stats
     public int PhysicalArmor => physicalArmor;
     public int MagicArmor => magicArmor;
 
-    private Random rnd;
+    public bool IsDead => vitality <= 0;
 
-    private int characterId;
-
-    public void OnAttack(Attack attack)
+    public void Hurt(int damage)
     {
-      if (rnd.NextDouble() <= DodgeChance)
-      {
-        if (attack.DamageType == DamageType.PHYSICAL)
-          CalculateDamage(attack.DamageValue, PhysicalArmor);
-        else if (attack.DamageType == DamageType.MAGIC)
-          CalculateDamage(attack.DamageValue, MagicArmor);
-      }
+      vitality = Mathf.Clamp(vitality - damage, 0, maxVitality);
     }
 
-    private void CalculateDamage(int damage, int armorValue)
-    {
-      bool isCriticalStrike = rnd.NextDouble() <= CriticalChance;
-      if (isCriticalStrike)
-        damage *= 2;
 
-      vitality -= damage - armorValue;
-
-      if (vitality <= 0) ;
-        //Remove comment and ; above once stat contains id
-        //BattleEventManager.current.KillTarget(id);
-    }
-    
-    
   }
 }
