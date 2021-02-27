@@ -10,17 +10,20 @@ public class BattleEventManager : MonoBehaviour
 {
     //To remove once we have a factory
     [SerializeField] private Character baseEnemy;
+    [SerializeField] private float timeBetweenAttackInSeconds = 2f;
     
     public static BattleEventManager current;
     
     public Character[] characters;
     private List<int> battleQueue;
+    private bool isWaitingBetweenAttacks;
 
     private void Awake()
     {
         current = this;
         characters = new Character[6];
         battleQueue = new List<int>();
+        isWaitingBetweenAttacks = false;
     }
 
     private void Start()
@@ -35,6 +38,14 @@ public class BattleEventManager : MonoBehaviour
         onAttack?.Invoke(attack, IsCriticalHit());
         battleQueue.Add(battleQueue[0]);
         battleQueue.RemoveAt(0);
+        StartCoroutine(WaitForAttackToEnd());
+    }
+
+    private IEnumerator WaitForAttackToEnd()
+    {
+        isWaitingBetweenAttacks = true;
+        yield return new WaitForSeconds(timeBetweenAttackInSeconds);
+        isWaitingBetweenAttacks = false;
     }
 
     private void NewBattle()
@@ -77,7 +88,9 @@ public class BattleEventManager : MonoBehaviour
 
     public int GetCurrentAttackerId()
     {
-        return battleQueue[0];
+        if (!isWaitingBetweenAttacks)
+            return battleQueue[0];
+        return -1;
     }
 
     public void KillTarget()
