@@ -11,7 +11,6 @@ public class Character : MonoBehaviour
 
   private CharacterEquipementManager currentEquipement;
   private CharacterStats stats;
-  private bool isDead = false;
 
   public CharacterStats Stats => stats;
   public bool IsDead => stats.IsDead;
