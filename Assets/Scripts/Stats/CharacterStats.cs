@@ -6,8 +6,8 @@ namespace Stats
 {
   public class CharacterStats : MonoBehaviour
   {
-    [SerializeField] [Range(0, 100)] private int vitality = 1;
-    [SerializeField] private int maxVitality = 1;
+    [SerializeField] private int health = 1;
+    [SerializeField] private int maxHealth = 1;
 
     [SerializeField] [Range(0, 100)] private int physicalArmor = 0;
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
@@ -21,10 +21,10 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int criticalChance = 5;
     [SerializeField] [Range(0, 100)] private int dodgeChance = 5;
 
-        public CharacterStats(int maxVitality, int physicalArmor, int magicArmor, int speed, int dexterity, int strength, int intelligence, int criticalChance, int dodgeChance)
+        public CharacterStats(int maxHealth, int physicalArmor, int magicArmor, int speed, int dexterity, int strength, int intelligence, int criticalChance, int dodgeChance)
     {
-        vitality = maxVitality;
-        this.maxVitality = maxVitality;
+        health = maxHealth;
+        this.maxHealth = maxHealth;
         this.physicalArmor = physicalArmor;
         this.magicArmor = magicArmor;
         this.speed = speed;
@@ -35,7 +35,8 @@ namespace Stats
         this.dodgeChance = dodgeChance;
     }
 
-    public int Vitality => vitality;
+    public int Health => health;
+    public int MaxHealth => maxHealth;
 
     public int PhysicalArmor => physicalArmor;
     public int MagicArmor => magicArmor;
