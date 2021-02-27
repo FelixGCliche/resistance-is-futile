@@ -45,14 +45,14 @@ namespace GameCharacter
     void Start()
     {
       if (isPlayer)
-        BattleEventManager.current.characters[playerId] = this;
-      BattleEventManager.current.onAttack += OnDefend;
+        BattleEventManager.Current.characters[playerId] = this;
+      BattleEventManager.Current.onAttack += OnDefend;
     }
 
     // Update is called once per frame
     void Update()
     {
-      if (BattleEventManager.current.GetCurrentAttackerId() == playerId)
+      if (BattleEventManager.Current.GetCurrentAttackerId() == playerId)
       {
         if (isPlayer)
         {
@@ -60,17 +60,17 @@ namespace GameCharacter
           if (Input.GetKeyDown(KeyCode.Alpha1))
           {
             Debug.Log("Player " + playerId + " attacks player " + 3);
-            BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(3));
+            BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(3));
           }
           else if (Input.GetKeyDown(KeyCode.Alpha2))
           {
             Debug.Log("Player " + playerId + " attacks player " + 4);
-            BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(4));
+            BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(4));
           }
           else if (Input.GetKeyDown(KeyCode.Alpha3))
           {
             Debug.Log("Player " + playerId + " attacks player " + 5);
-            BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(5));
+            BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(5));
           }
         }
         else
@@ -78,7 +78,7 @@ namespace GameCharacter
           //Need enemy Ai
           int target = Random.Range(0, 3);
           Debug.Log("Player " + playerId + " attacks player " + target);
-          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(target));
+          BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(target));
         }
       }
     }

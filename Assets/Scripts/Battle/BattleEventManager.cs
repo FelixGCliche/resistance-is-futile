@@ -12,7 +12,7 @@ namespace Battle
         [SerializeField] private GameCharacter.Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
     
-        public static BattleEventManager current;
+        public static BattleEventManager Current;
     
         public GameCharacter.Character[] characters;
         private List<int> battleQueue;
@@ -20,7 +20,7 @@ namespace Battle
 
         private void Awake()
         {
-            current = this;
+            Current = this;
             characters = new GameCharacter.Character[6];
             battleQueue = new List<int>();
             isWaitingBetweenAttacks = false;

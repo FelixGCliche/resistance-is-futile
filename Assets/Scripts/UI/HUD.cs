@@ -19,11 +19,11 @@ public class HUD : MonoBehaviour
 
     private IEnumerator WaitForEnabledEnemy()
     {
-        yield return new WaitUntil(() => BattleEventManager.current.characters[3] != null && 
-                                         BattleEventManager.current.characters[4] != null && 
-                                         BattleEventManager.current.characters[5] != null);
-        enemy1HealthBar.Character = BattleEventManager.current.characters[3];
-        enemy2HealthBar.Character = BattleEventManager.current.characters[4];
-        enemy3HealthBar.Character = BattleEventManager.current.characters[5];
+        yield return new WaitUntil(() => BattleEventManager.Current.characters[3] != null && 
+                                         BattleEventManager.Current.characters[4] != null && 
+                                         BattleEventManager.Current.characters[5] != null);
+        enemy1HealthBar.Character = BattleEventManager.Current.characters[3];
+        enemy2HealthBar.Character = BattleEventManager.Current.characters[4];
+        enemy3HealthBar.Character = BattleEventManager.Current.characters[5];
     }
 }
