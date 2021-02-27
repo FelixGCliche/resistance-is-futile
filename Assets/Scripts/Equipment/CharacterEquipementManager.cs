@@ -4,12 +4,12 @@ namespace Equipment
 {
   public class CharacterEquipementManager : MonoBehaviour
   {
-    private Equippable helmet;
-    private Equippable chestPiece;
-    private Equippable greaves;
-    private Equippable boots;
-    private Equippable necklace;
-    private Equippable ring;
+    private Equipement helmet;
+    private Equipement chestPiece;
+    private Equipement greaves;
+    private Equipement boots;
+    private Equipement necklace;
+    private Equipement ring;
     private Weapon weapon;
 
     private int equipementSpeedBoost;
@@ -32,7 +32,7 @@ namespace Equipment
 
     public Weapon Weapon => weapon;
 
-    public void SwapEquipement(Equippable newEquippable)
+    public void SwapEquipement(Equipement newEquippable)
     {
       switch (newEquippable.Type)
       {
