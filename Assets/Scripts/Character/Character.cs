@@ -90,7 +90,7 @@ public class Character : MonoBehaviour
       if (attack.DamageType == DamageType.PHYSICAL)
         totalDamage -= stats.PhysicalArmor;
 
-      else if (attack.DamageType == DamageType.PHYSICAL)
+      else if (attack.DamageType == DamageType.MAGIC)
         totalDamage -= stats.MagicArmor;
     }
 
