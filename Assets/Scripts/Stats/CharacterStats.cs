@@ -40,9 +40,9 @@ namespace Stats
 
     public void Hurt(int damage)
     {
-      vitality = Mathf.Clamp(vitality - damage, 0, maxVitality);
-      Debug.Log("Health : " + vitality + "/" + maxVitality);
-      if (vitality <= 0)
+      health = Mathf.Clamp(health - damage, 0, maxHealth);
+      Debug.Log("Health : " + health + "/" + maxHealth);
+      if (health <= 0)
         BattleEventManager.current.KillTarget();
     }
 

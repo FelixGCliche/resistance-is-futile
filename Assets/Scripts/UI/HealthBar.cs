@@ -35,7 +35,7 @@ public class HealthBar : MonoBehaviour
 
     private IEnumerator LateStart()
     {
-        yield return new WaitUntil(() => character.isActiveAndEnabled);
+        yield return new WaitUntil(() => character != null);
         currentHealth = character.Stats.Health;
         maxHealth = character.Stats.MaxHealth;
         healthSlider.maxValue = maxHealth;
