@@ -67,7 +67,7 @@ public class Character : MonoBehaviour
       stats.Hurt(GetTotalDamage(attack, isCriticalHit));
   }
 
-  private int GetTotalDamage(Attack attack, bool isCreiticalHit)
+  private int GetTotalDamage(Attack attack, bool isCriticalHit)
   {
     int totalDamage = 0;
     
@@ -75,7 +75,7 @@ public class Character : MonoBehaviour
     {
       totalDamage = attack.DamageValue;
       
-      if (isCreiticalHit)
+      if (isCriticalHit)
         totalDamage *= 2;
 
       if (attack.DamageType == DamageType.PHYSICAL)
