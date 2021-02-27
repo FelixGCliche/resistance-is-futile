@@ -24,13 +24,14 @@ public class Vitality : MonoBehaviour
     {
         health -= attack.damageValue;
         
-        Debug.Log(health);
-        
         if (health <= 0)
         {
-            Debug.Log("You are dead");
+            //Need to kill player
+            health = 0;
+            Debug.Log(attack.target + " is dead");
         }
-            
+        
+        Debug.Log("Player " + attack.target + " health : " + health + "/" + maxHealth);
     }
 
     public void Heal(int value)

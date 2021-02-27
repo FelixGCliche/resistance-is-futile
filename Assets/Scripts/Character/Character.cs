@@ -4,14 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Character : MonoBehaviour
 {
     [SerializeField] private int level = 1;
     [SerializeField] private Vitality vitality;
     [SerializeField] private Damage damage;
-    [SerializeField] private int playerId = 1;
-    [SerializeField] private KeyCode attackKey = KeyCode.Q;
+    [SerializeField] public int playerId = 1;
     [SerializeField] private bool isPlayer = true;
 
     private CharacterEquipementManager currentEquipement;
@@ -19,6 +19,8 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(isPlayer)
+            BattleEventManager.current.players[playerId - 1] = this;
         BattleEventManager.current.onAttack += onAttack;
     }
 
@@ -30,15 +32,27 @@ public class Character : MonoBehaviour
             if (isPlayer)
             {
                 //Adapt to different player attack
-                if (Input.GetKeyDown(attackKey))
+                if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
+                    Debug.Log("Player " + playerId + " attacks player " + 4);
                     AttackCharacter(4);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Debug.Log("Player " + playerId + " attacks player " + 5);
+                    AttackCharacter(5);
+                }
+                else if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    Debug.Log("Player " + playerId + " attacks player " + 6);
+                    AttackCharacter(6);
                 }
             }
             else
             {
                 //Need enemy Ai
-                AttackCharacter(1);
+                Debug.Log("Player " + playerId + " attacks player " + 1);
+                AttackCharacter(Random.Range(1, 3));
             }
         }
     }
