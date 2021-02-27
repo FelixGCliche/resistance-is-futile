@@ -17,10 +17,10 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int strength = 1;
     [SerializeField] [Range(0, 100)] private int intelligence = 1;
 
-    [SerializeField] [Range(0.0f, 1.0f)] private float criticalChance = 0.05f;
-    [SerializeField] [Range(0.0f, 1.0f)] private float dodgeChance = 0.05f;
+    [SerializeField] [Range(0, 100)] private int criticalChance = 5;
+    [SerializeField] [Range(0, 100)] private int dodgeChance = 5;
 
-    public CharacterStats(int maxVitality, int physicalArmor, int magicArmor, int speed, int dexterity, int strength, int intelligence, float criticalChance, float dodgeChance)
+        public CharacterStats(int maxVitality, int physicalArmor, int magicArmor, int speed, int dexterity, int strength, int intelligence, int criticalChance, int dodgeChance)
     {
         vitality = maxVitality;
         this.maxVitality = maxVitality;
@@ -45,14 +45,17 @@ namespace Stats
     public int Strength => strength;
     public int Intelligence => intelligence;
 
-    public float CriticalChance => criticalChance;
-    public float DodgeChance => dodgeChance;
+    public int CriticalChance => criticalChance;
+    public int DodgeChance => dodgeChance;
 
     public bool IsDead => vitality <= 0;
 
     public void Hurt(int damage)
     {
       vitality = Mathf.Clamp(vitality - damage, 0, maxVitality);
+      Debug.Log("Health : " + vitality + "/" + maxVitality);
+      if (vitality <= 0)
+        BattleEventManager.current.KillTarget();
     }
   }
 }

@@ -105,8 +105,8 @@ public class Character : MonoBehaviour
 
     private bool IsHit()
     {
-    return Random.value <= stats.DodgeChance;
-    // Mettre event rétroaction "Evade"
+        return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
+        // Mettre event rétroaction "Evade"
     }
 
     private bool IsCriticalHit()
@@ -115,4 +115,3 @@ public class Character : MonoBehaviour
     // Mettre event rétroaction "Critical"
     }
 }
-
