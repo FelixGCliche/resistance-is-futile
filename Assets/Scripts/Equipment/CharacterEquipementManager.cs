@@ -4,13 +4,13 @@ namespace Equipment
 {
   public class CharacterEquipementManager : MonoBehaviour
   {
-    private IEquippable helmet;
-    private IEquippable chestPiece;
-    private IEquippable greaves;
-    private IEquippable boots;
-    private IEquippable necklace;
-    private IEquippable ring;
-    private IWeapon weapon;
+    private Equippable helmet;
+    private Equippable chestPiece;
+    private Equippable greaves;
+    private Equippable boots;
+    private Equippable necklace;
+    private Equippable ring;
+    private Weapon weapon;
 
     private int equipementSpeedBoost;
     private int equipementStrengthBoost;
@@ -30,7 +30,7 @@ namespace Equipment
     public int EquipementPhysicalArmorBoost => equipementPhysicalArmorBoost;
     public int EquipementMagicArmorBoost => equipementMagicArmorBoost;
 
-    public void SwapEquipement(IEquippable newEquippable)
+    public void SwapEquipement(Equippable newEquippable)
     {
       switch (newEquippable.Type)
       {
@@ -59,7 +59,7 @@ namespace Equipment
           UpdateBoosts();
           break;
         case EquipementType.WEAPON:
-          weapon = (IWeapon) newEquippable;
+          weapon = (Weapon) newEquippable;
           UpdateBoosts();
           break;
       }
