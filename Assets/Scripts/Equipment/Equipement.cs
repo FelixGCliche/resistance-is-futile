@@ -1,8 +1,8 @@
 namespace Equipment
 {
-    public class Equippable
+    public class Equipement
     {
-        public Equippable(EquipementType type, int level, int speedBoost, int strengthBoost, int dexterityBoost, int intelligenceBoost, int dodgeChanceBoost, int criticalChanceBoost, int magicArmorBoost, int physicalArmorBoost, int vitalityBoost)
+        public Equipement(EquipementType type, int level, int speedBoost, int strengthBoost, int dexterityBoost, int intelligenceBoost, int dodgeChanceBoost, int criticalChanceBoost, int magicArmorBoost, int physicalArmorBoost, int vitalityBoost)
         {
             Type = type;
             Level = level;
