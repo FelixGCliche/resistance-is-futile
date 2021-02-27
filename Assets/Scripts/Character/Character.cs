@@ -37,12 +37,12 @@ public class Character : MonoBehaviour
                     Debug.Log("Player " + playerId + " attacks player " + 4);
                     AttackCharacter(4);
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha1))
+                else if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     Debug.Log("Player " + playerId + " attacks player " + 5);
                     AttackCharacter(5);
                 }
-                else if (Input.GetKeyDown(KeyCode.Alpha1))
+                else if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     Debug.Log("Player " + playerId + " attacks player " + 6);
                     AttackCharacter(6);
