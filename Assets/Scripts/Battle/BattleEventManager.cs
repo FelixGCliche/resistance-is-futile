@@ -28,11 +28,11 @@ public class BattleEventManager : MonoBehaviour
         NewBattle();
     }
 
-    public event Action<Attack> onAttack;
+    public event Action<Attack, bool> onAttack;
 
     public void OnAttack(Attack attack)
     {
-        onAttack?.Invoke(attack);
+        onAttack?.Invoke(attack, IsCriticalHit());
         battleQueue.Add(battleQueue[0]);
         battleQueue.RemoveAt(0);
     }
@@ -115,5 +115,10 @@ public class BattleEventManager : MonoBehaviour
         characters[4] = null;
         Destroy(characters[5]);
         characters[5] = null;
+    }
+
+    private bool IsCriticalHit()
+    {
+        return Random.value <= characters[GetCurrentAttackerId()].Stats.CriticalChance;
     }
 }

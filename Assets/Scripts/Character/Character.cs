@@ -39,35 +39,35 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
           Debug.Log("Player " + playerId + " attacks player " + 4);
-          OnDefend(currentEquipement.Weapon.GetAttack(4));
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(4));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha2))
         {
           Debug.Log("Player " + playerId + " attacks player " + 5);
-          OnDefend(currentEquipement.Weapon.GetAttack(5));
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(5));
         }
         else if (Input.GetKeyDown(KeyCode.Alpha3))
         {
           Debug.Log("Player " + playerId + " attacks player " + 6);
-          OnDefend(currentEquipement.Weapon.GetAttack(6));
+          BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(6));
         }
       }
       else
       {
         //Need enemy Ai
         Debug.Log("Player " + playerId + " attacks player " + 1);
-        OnDefend(currentEquipement.Weapon.GetAttack(Random.Range(1, 4)));
+        BattleEventManager.current.OnAttack(currentEquipement.Weapon.GetAttack(Random.Range(1, 4)));
       }
     }
   }
 
-  private void OnDefend(Attack attack)
+  private void OnDefend(Attack attack, bool isCriticalHit)
   {
     if (attack.Target == playerId)
-      stats.Hurt(GetTotalDamage(attack));
+      stats.Hurt(GetTotalDamage(attack, isCriticalHit));
   }
 
-  private int GetTotalDamage(Attack attack)
+  private int GetTotalDamage(Attack attack, bool isCreiticalHit)
   {
     int totalDamage = 0;
     
@@ -75,7 +75,7 @@ public class Character : MonoBehaviour
     {
       totalDamage = attack.DamageValue;
       
-      if (IsCriticalHit())
+      if (isCreiticalHit)
         totalDamage *= 2;
 
       if (attack.DamageType == DamageType.PHYSICAL)
