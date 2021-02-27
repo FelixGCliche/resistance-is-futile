@@ -16,8 +16,8 @@ namespace Equipment
     private int equipementStrengthBoost;
     private int equipementDexterityBoost;
     private int equipementIntelligenceBoost;
-    private float equipementCriticalChanceBoost;
-    private float equipementDodgeChanceBoost;
+    private int equipementCriticalChanceBoost;
+    private int equipementDodgeChanceBoost;
     private int equipementPhysicalArmorBoost;
     private int equipementMagicArmorBoost;
 
@@ -25,8 +25,8 @@ namespace Equipment
     public int EquipementStrengthBoost => equipementStrengthBoost;
     public int EquipementDexterityBoost => equipementDexterityBoost;
     public int EquipementIntelligenceBoost => equipementIntelligenceBoost;
-    public float EquipementCriticalChanceBoost => equipementCriticalChanceBoost;
-    public float EquipementDodgeChanceBoost => equipementDodgeChanceBoost;
+    public int EquipementCriticalChanceBoost => equipementCriticalChanceBoost;
+    public int EquipementDodgeChanceBoost => equipementDodgeChanceBoost;
     public int EquipementPhysicalArmorBoost => equipementPhysicalArmorBoost;
     public int EquipementMagicArmorBoost => equipementMagicArmorBoost;
 

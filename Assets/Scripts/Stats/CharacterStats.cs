@@ -16,8 +16,8 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int strength = 1;
     [SerializeField] [Range(0, 100)] private int intelligence = 1;
 
-    [SerializeField] [Range(0, 100)] private float dodgeChance = 5;
-    [SerializeField] [Range(0, 100)] private float criticalChance = 5;
+    [SerializeField] [Range(0, 100)] private int dodgeChance = 5;
+    [SerializeField] [Range(0, 100)] private int criticalChance = 5;
 
     [SerializeField] [Range(0, 100)] private int physicalArmor = 0;
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
@@ -29,8 +29,8 @@ namespace Stats
     public int Dexterity => dexterity;
     public int Strength => strength;
     public int Intelligence => intelligence;
-    public float DodgeChance => dodgeChance;
-    public float CriticalChance => criticalChance;
+    public int DodgeChance => dodgeChance;
+    public int CriticalChance => criticalChance;
     public int PhysicalArmor => physicalArmor;
     public int MagicArmor => magicArmor;
 
