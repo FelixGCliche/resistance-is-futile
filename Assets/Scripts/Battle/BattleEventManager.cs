@@ -15,20 +15,18 @@ namespace Battle
         public static BattleEventManager Current;
     
         public Character[] characters;
+        public Character currentCharacter => battleQueue.GetCurrentCharacter();
+        
         private BattleQueue battleQueue;
         private bool isWaitingBetweenAttacks;
 
         private void Awake()
         {
-            Current = this;
             characters = new Character[6];
+            NewBattle();
             battleQueue = new BattleQueue(characters);
             isWaitingBetweenAttacks = false;
-        }
-
-        private void Start()
-        {
-            NewBattle();
+            Current = this;
         }
 
         public event Action<Attack, bool> onAttack;
