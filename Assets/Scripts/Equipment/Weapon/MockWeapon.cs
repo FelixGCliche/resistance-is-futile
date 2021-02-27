@@ -1,6 +1,6 @@
 namespace Equipment
 {
-  public class MockWeapon: IWeapon
+  public class MockWeapon
   {
     
     private EquipementType type;
