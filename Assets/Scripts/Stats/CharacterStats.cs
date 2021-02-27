@@ -16,8 +16,8 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int strength = 1;
     [SerializeField] [Range(0, 100)] private int intelligence = 1;
 
-    [SerializeField] [Range(0.0f, 1.0f)] private float dodgeChance = 0.05f;
-    [SerializeField] [Range(0.0f, 1.0f)] private float criticalChance = 0.05f;
+    [SerializeField] [Range(0, 100)] private float dodgeChance = 5;
+    [SerializeField] [Range(0, 100)] private float criticalChance = 5;
 
     [SerializeField] [Range(0, 100)] private int physicalArmor = 0;
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
