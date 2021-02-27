@@ -1,3 +1,4 @@
+using Battle;
 using Equipment;
 using UnityEngine;
 using UnityEngine.Serialization;

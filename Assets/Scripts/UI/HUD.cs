@@ -1,6 +1,8 @@
 ﻿
 using System;
 using System.Collections;
+using Battle;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 

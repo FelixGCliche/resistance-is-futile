@@ -1,4 +1,3 @@
-using System;
 using Battle;
 using Equipment;
 using Factory;
@@ -6,7 +5,7 @@ using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Character
+namespace GameCharacter
 {
   public class Character : MonoBehaviour
   {

@@ -3,42 +3,45 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private Character character;
-    private Slider healthSlider;
-    private TextMeshProUGUI healthText;
-    private int maxHealth;
-    private int currentHealth;
-
-    public Character Character
+    public class HealthBar : MonoBehaviour
     {
-        set => character = value;
-    }
+        [SerializeField] private GameCharacter.Character character;
+        private Slider healthSlider;
+        private TextMeshProUGUI healthText;
+        private int maxHealth;
+        private int currentHealth;
 
-    private void Awake()
-    {
-        healthSlider = GetComponent<Slider>();
-        healthText = GetComponentInChildren<TextMeshProUGUI>();
-    }
+        public GameCharacter.Character Character
+        {
+            set => character = value;
+        }
 
-    void Start()
-    {
-        StartCoroutine(LateStart());
-    }
+        private void Awake()
+        {
+            healthSlider = GetComponent<Slider>();
+            healthText = GetComponentInChildren<TextMeshProUGUI>();
+        }
 
-    private void Update()
-    {
-        healthSlider.value = currentHealth;
-        healthText.text = currentHealth + " / " + maxHealth;
-    }
+        void Start()
+        {
+            StartCoroutine(LateStart());
+        }
 
-    private IEnumerator LateStart()
-    {
-        yield return new WaitUntil(() => character != null);
-        currentHealth = character.Stats.Health;
-        maxHealth = character.Stats.MaxHealth;
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        private void Update()
+        {
+            healthSlider.value = currentHealth;
+            healthText.text = currentHealth + " / " + maxHealth;
+        }
+
+        private IEnumerator LateStart()
+        {
+            yield return new WaitUntil(() => character != null);
+            currentHealth = character.Stats.Health;
+            maxHealth = character.Stats.MaxHealth;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
     }
 }
