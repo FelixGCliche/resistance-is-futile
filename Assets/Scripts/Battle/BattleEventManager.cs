@@ -28,11 +28,11 @@ public class BattleEventManager : MonoBehaviour
         NewBattle();
     }
 
-    public event Action<Attack> onAttack;
+    public event Action<Attack, bool> onAttack;
 
     public void OnAttack(Attack attack)
     {
-        onAttack?.Invoke(attack);
+        onAttack?.Invoke(attack, IsCriticalHit());
         battleQueue.Add(battleQueue[0]);
         battleQueue.RemoveAt(0);
     }
@@ -80,10 +80,13 @@ public class BattleEventManager : MonoBehaviour
         return battleQueue[0];
     }
 
-    public void KillTarget(int target)
+    public void KillTarget()
     {
-        battleQueue.Remove(target - 1);
-        characters[target-1].Die();
+        foreach (Character character in characters)
+        {
+            if (character.IsDead)
+                battleQueue.Remove(character.playerId);
+        }
         
         if(characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
             EndBattle();
@@ -112,5 +115,10 @@ public class BattleEventManager : MonoBehaviour
         characters[4] = null;
         Destroy(characters[5]);
         characters[5] = null;
+    }
+
+    private bool IsCriticalHit()
+    {
+        return Random.value <= characters[GetCurrentAttackerId()].Stats.CriticalChance;
     }
 }
