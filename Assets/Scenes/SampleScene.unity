@@ -541,7 +541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534088934804885140, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -400
+      value: -600
       objectReference: {fileID: 0}
     - target: {fileID: 4534088934804885140, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -619,6 +619,18 @@ PrefabInstance:
     - target: {fileID: 6684674590298895152, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: m_Name
       value: Character (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: maxHealth
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: maxVitality
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8439359690699512972, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: playerId
@@ -738,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534088934804885140, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -600
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 4534088934804885140, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -816,6 +828,18 @@ PrefabInstance:
     - target: {fileID: 6684674590298895152, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: health
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: vitality
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: maxVitality
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8439359690699512972, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: playerId
@@ -1002,6 +1026,14 @@ PrefabInstance:
     - target: {fileID: 6684674590298895152, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: m_Name
       value: Character (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7361225979163030312, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8439359690699512972, guid: bf3f4e3ac79627f48a35ccbdf3cf0594, type: 3}
       propertyPath: playerId

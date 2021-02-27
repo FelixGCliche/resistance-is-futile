@@ -18,14 +18,14 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        maxHealth = character.Stats.MaxVitality;
+        maxHealth = character.Stats.MaxHealth;
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = character.Stats.Vitality;
+        healthSlider.value = character.Stats.Health;
     }
 
     private void Update()
     {
-        healthSlider.value = character.Stats.Vitality;
-        healthText.text = character.Stats.Vitality + " / " + maxHealth;
+        healthSlider.value = character.Stats.Health;
+        healthText.text = character.Stats.Health + " / " + maxHealth;
     }
 }

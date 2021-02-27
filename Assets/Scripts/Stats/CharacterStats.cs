@@ -1,5 +1,6 @@
 using Equipment;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Stats
 {
@@ -8,8 +9,8 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int experience = 1;
     [SerializeField] [Range(0, 100)] private int level = 1;
 
-    [SerializeField] [Range(0, 100)] private int vitality = 1;
-    [SerializeField] private int maxVitality = 10;
+    [SerializeField] private int health = 1;
+    [SerializeField] private int maxHealth = 10;
 
     [SerializeField] [Range(0, 100)] private int speed = 1;
     [SerializeField] [Range(0, 100)] private int dexterity = 1;
@@ -23,9 +24,9 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
 
     public int Experience => experience;
-    public int MaxVitality => maxVitality;
+    public int MaxHealth => maxHealth;
     public int Level => level;
-    public int Vitality => vitality;
+    public int Health => health;
     public int Speed => speed;
     public int Dexterity => dexterity;
     public int Strength => strength;
@@ -35,11 +36,11 @@ namespace Stats
     public int PhysicalArmor => physicalArmor;
     public int MagicArmor => magicArmor;
 
-    public bool IsDead => vitality <= 0;
+    public bool IsDead => health <= 0;
 
     public void Hurt(int damage)
     {
-      vitality = Mathf.Clamp(vitality - damage, 0, maxVitality);
+      health = Mathf.Clamp(health - damage, 0, maxHealth);
     }
 
 

@@ -2,7 +2,7 @@ namespace Equipment
 {
     public class Equipement
     {
-        public Equipement(EquipementType type, int level, int speedBoost, int strengthBoost, int dexterityBoost, int intelligenceBoost, int dodgeChanceBoost, int criticalChanceBoost, int magicArmorBoost, int physicalArmorBoost, int vitalityBoost)
+        public Equipement(EquipementType type, int level, int speedBoost, int strengthBoost, int dexterityBoost, int intelligenceBoost, int dodgeChanceBoost, int criticalChanceBoost, int magicArmorBoost, int physicalArmorBoost, int maxHealthBoost)
         {
             Type = type;
             Level = level;
@@ -14,7 +14,7 @@ namespace Equipment
             CriticalChanceBoost = criticalChanceBoost;
             MagicArmorBoost = magicArmorBoost;
             PhysicalArmorBoost = physicalArmorBoost;
-            VitalityBoost = vitalityBoost;
+            MaxHealthBoost = maxHealthBoost;
         }
 
         public EquipementType Type { get; }
@@ -30,6 +30,6 @@ namespace Equipment
 
         public int MagicArmorBoost { get; }
         public int PhysicalArmorBoost { get; }
-        public int VitalityBoost { get; }
+        public int MaxHealthBoost { get; }
     }
 }
