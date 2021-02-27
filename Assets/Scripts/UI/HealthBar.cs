@@ -12,7 +12,8 @@ public class HealthBar : MonoBehaviour
 
     private void Awake()
     {
-        character = GetComponent<Character>();
+        healthSlider = GetComponent<Slider>();
+        healthText = GetComponentInChildren<TextMeshPro>();
     }
 
     void Start()
@@ -25,6 +26,6 @@ public class HealthBar : MonoBehaviour
     private void Update()
     {
         healthSlider.value = character.Stats.Vitality;
-        healthText.text = character.Stats.Vitality.ToString() + " / " + maxHealth.ToString();
+        //healthText.text = character.Stats.Vitality + " / " + maxHealth;
     }
 }
