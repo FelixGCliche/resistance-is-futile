@@ -45,7 +45,7 @@ public class Character : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
-    if (BattleEventManager.Current.GetCurrentAttackerId() == playerId)
+    if (BattleEventManager.Current.currentCharacter == this)
     {
       if (isPlayer)
       {
