@@ -1,3 +1,5 @@
+using Battle;
+
 namespace Equipment
 {
     public class Weapon: Equipement

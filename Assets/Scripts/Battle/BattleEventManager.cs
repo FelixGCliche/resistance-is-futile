@@ -1,25 +1,26 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Battle;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class BattleEventManager : MonoBehaviour
 {
     //To remove once we have a factory
-    [SerializeField] private Character baseEnemy;
+    [SerializeField] private Character.Character baseEnemy;
     [SerializeField] private float timeBetweenAttackInSeconds = 2f;
     
     public static BattleEventManager current;
     
-    public Character[] characters;
+    public Character.Character[] characters;
     private List<int> battleQueue;
     private bool isWaitingBetweenAttacks;
 
     private void Awake()
     {
         current = this;
-        characters = new Character[6];
+        characters = new Character.Character[6];
         battleQueue = new List<int>();
         isWaitingBetweenAttacks = false;
     }
@@ -93,7 +94,7 @@ public class BattleEventManager : MonoBehaviour
 
     public void KillTarget()
     {
-        foreach (Character character in characters)
+        foreach (Character.Character character in characters)
         {
             if (character.IsDead)
                 battleQueue.Remove(character.playerId);
