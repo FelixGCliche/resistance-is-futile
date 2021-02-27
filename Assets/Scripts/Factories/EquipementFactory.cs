@@ -6,14 +6,8 @@ using UnityEngine;
 namespace Factory
 {
     public class EquipementFactory : ItemFactory
-    {
-        public static Equipement CreateNewEquipement(int level)
-        {
-            int[] statsArray = GetRandomStatsArray(level);
-            return new Equipement(GetEquipementType(), statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
-        }
-        
-        public static Equipement CreateNewEquipementWithType(int level, EquipementType type)
+    {    
+        public static Equipement CreateNewEquipement(int level, EquipementType type)
         {
             int[] statsArray = GetRandomStatsArray(level);
             return new Equipement(type, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
@@ -21,8 +15,7 @@ namespace Factory
 
         public static Equipement CreateStartingEquipementWithType(EquipementType type)
         {
-            int[] statsArray = GetRandomStatsArray(1);
-            return new Equipement(type, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
+            return new Equipement(type, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
         private static EquipementType GetEquipementType()
