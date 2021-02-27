@@ -9,19 +9,15 @@ public class Character : MonoBehaviour
   [SerializeField] private int level = 1;
   [SerializeField] public int playerId = 0;
   [SerializeField] private bool isPlayer = true;
-
-  private CharacterEquipementManager currentEquipement;
-  private CharacterStats stats;
+  [SerializeField] private CharacterStats stats;
+  [SerializeField] private CharacterEquipementManager currentEquipement;
 
   public CharacterStats Stats => stats;
-
   public CharacterEquipementManager CurrentEquipement => currentEquipement;
   public bool IsDead => stats.IsDead;
 
   private void Awake()
   {
-    stats = gameObject.AddComponent<CharacterStats>();
-    currentEquipement = gameObject.AddComponent<CharacterEquipementManager>();
     currentEquipement.SwapEquipementWithoutStatUpdate(WeaponFactory.CreateNewWeapon(1));
     currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.RING));
     currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.BOOTS));
