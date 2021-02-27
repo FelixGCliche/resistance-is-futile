@@ -80,7 +80,7 @@ public class BattleEventManager : MonoBehaviour
         return battleQueue[0];
     }
 
-    public void KillTarget(int target)
+    public void KillTarget()
     {
         foreach (Character character in characters)
         {
