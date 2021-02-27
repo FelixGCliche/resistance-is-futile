@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
   private CharacterEquipementManager currentEquipement;
   private CharacterStats stats;
 
+  public CharacterStats Stats => stats;
+
   // Start is called before the first frame update
   void Start()
   {

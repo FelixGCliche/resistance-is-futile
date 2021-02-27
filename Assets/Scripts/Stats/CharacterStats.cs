@@ -9,7 +9,8 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int experience = 1;
     [SerializeField] [Range(0, 100)] private int level = 1;
 
-    [SerializeField] [Range(0, 100)] private int vitality = 1;
+    [SerializeField] private int maxVitality = 1;
+    [SerializeField] private int vitality = 1;
 
     [SerializeField] [Range(0, 100)] private int speed = 1;
     [SerializeField] [Range(0, 100)] private int dexterity = 1;
@@ -24,6 +25,7 @@ namespace Stats
 
     public int Experience => experience;
     public int Level => Level;
+    public int MaxVitality => maxVitality;
     public int Vitality => vitality;
     public int Speed => speed;
     public int Dexterity => dexterity;
