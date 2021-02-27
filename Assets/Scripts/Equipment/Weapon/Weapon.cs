@@ -1,3 +1,5 @@
+using Battle;
+
 namespace Equipment
 {
     public class Weapon: Equipement
@@ -15,7 +17,7 @@ namespace Equipment
 
         public Attack GetAttack(int target)
         {
-            return new Attack(target, BaseDamage, DamageType);
+            return new Attack(target, BaseDamage, DamageType, WeaponType);
         }
     }
 }
