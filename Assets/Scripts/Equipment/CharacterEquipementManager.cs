@@ -32,6 +32,18 @@ namespace Equipment
 
     public Weapon Weapon => weapon;
 
+    public CharacterEquipementManager(Equipement helmet, Equipement chestPiece, Equipement greaves, Equipement boots, Equipement necklace, Equipement ring, Weapon weapon)
+    {
+        this.helmet = helmet;
+        this.chestPiece = chestPiece;
+        this.greaves = greaves;
+        this.boots = boots;
+        this.necklace = necklace;
+        this.ring = ring;
+        this.weapon = weapon;
+        UpdateBoosts();
+    }
+
     public void SwapEquipement(Equipement newEquippable)
     {
       switch (newEquippable.Type)
@@ -97,17 +109,17 @@ namespace Equipment
 
     private void UpdateBoosts()
     {
-      GetEquipementSpeedBoost();
-      GetEquipementDexterityBoost();
-      GetEquipementStrengthBoost();
-      GetEquipementIntelligenceBoost();
-      GetEquipementDodgeChanceBoost();
-      GetEquipementCriticalChanceBoost();
-      GetEquipementPhysicalArmorBoost();
-      GetEquipementMagicArmorBoost();
+      CalculateEquipementSpeedBoost();
+      CalculateEquipementDexterityBoost();
+      CalculateEquipementStrengthBoost();
+      CalculateEquipementIntelligenceBoost();
+      CalculateEquipementDodgeChanceBoost();
+      CalculateGetEquipementCriticalChanceBoost();
+      CalculateEquipementPhysicalArmorBoost();
+      CalculateEquipementMagicArmorBoost();
     }
 
-    public void GetEquipementSpeedBoost()
+    private void CalculateEquipementSpeedBoost()
     {
       equipementSpeedBoost = helmet.SpeedBoost + 
              chestPiece.SpeedBoost + 
@@ -118,7 +130,7 @@ namespace Equipment
              weapon.SpeedBoost;
     }
 
-    public void GetEquipementStrengthBoost()
+    private void CalculateEquipementStrengthBoost()
     {
       equipementStrengthBoost = helmet.StrengthBoost + 
              chestPiece.StrengthBoost + 
@@ -129,7 +141,7 @@ namespace Equipment
              weapon.StrengthBoost;
     }
 
-    public void GetEquipementDexterityBoost()
+    private void CalculateEquipementDexterityBoost()
     {
       equipementDexterityBoost = helmet.DexterityBoost + 
              chestPiece.DexterityBoost + 
@@ -140,7 +152,7 @@ namespace Equipment
              weapon.DexterityBoost;
     }
 
-    public void GetEquipementIntelligenceBoost()
+    private void CalculateEquipementIntelligenceBoost()
     {
       equipementIntelligenceBoost = helmet.IntelligenceBoost + 
              chestPiece.IntelligenceBoost + 
@@ -151,7 +163,7 @@ namespace Equipment
              weapon.IntelligenceBoost;
     }
 
-    public void GetEquipementDodgeChanceBoost()
+    private void CalculateEquipementDodgeChanceBoost()
     {
       equipementDodgeChanceBoost = helmet.DodgeChanceBoost + 
              chestPiece.DodgeChanceBoost + 
@@ -162,7 +174,7 @@ namespace Equipment
              weapon.DodgeChanceBoost;
     }
 
-    public void GetEquipementCriticalChanceBoost()
+    private void CalculateGetEquipementCriticalChanceBoost()
     {
       equipementCriticalChanceBoost = helmet.CriticalChanceBoost + 
              chestPiece.CriticalChanceBoost + 
@@ -173,7 +185,7 @@ namespace Equipment
              weapon.CriticalChanceBoost;
     }
 
-    public void GetEquipementPhysicalArmorBoost()
+    private void CalculateEquipementPhysicalArmorBoost()
     {
       equipementPhysicalArmorBoost = helmet.PhysicalArmorBoost + 
              chestPiece.PhysicalArmorBoost + 
@@ -184,7 +196,7 @@ namespace Equipment
              weapon.PhysicalArmorBoost;
     }
 
-    public void GetEquipementMagicArmorBoost()
+    private void CalculateEquipementMagicArmorBoost()
     {
       equipementMagicArmorBoost = helmet.MagicArmorBoost+ 
              chestPiece.MagicArmorBoost+ 
