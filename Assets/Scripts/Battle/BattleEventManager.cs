@@ -65,7 +65,7 @@ public class BattleEventManager : MonoBehaviour
                 battleQueue.Add(i);
         }
 
-        for (int i = 1; i < 6; i++)
+        for (int i = 0; i < 3; i++)
         {
             int iSpeed = characters[battleQueue[i]].Stats.Speed;
             for (int j = i-1; j >= 0; j--)
