@@ -9,23 +9,25 @@ public class HealthBar : MonoBehaviour
     private Slider healthSlider;
     private TextMeshProUGUI healthText;
     private int maxHealth;
+    private int currentHealth;
 
     private void Awake()
     {
         healthSlider = GetComponent<Slider>();
         healthText = GetComponentInChildren<TextMeshProUGUI>();
+        currentHealth = character.Stats.Health;
     }
 
     void Start()
     {
         maxHealth = character.Stats.MaxHealth;
         healthSlider.maxValue = maxHealth;
-        healthSlider.value = character.Stats.Health;
+        healthSlider.value = currentHealth;
     }
 
     private void Update()
     {
-        healthSlider.value = character.Stats.Health;
-        healthText.text = character.Stats.Health + " / " + maxHealth;
+        healthSlider.value = currentHealth;
+        healthText.text = currentHealth + " / " + maxHealth;
     }
 }
