@@ -17,7 +17,7 @@ namespace Equipment
             VitalityBoost = vitalityBoost;
         }
 
-        EquipementType Type { get; }
+        public EquipementType Type { get; }
     
         int Level { get; }
     
