@@ -6,7 +6,6 @@ namespace Factory
 {
     public class ItemFactory : object
     {
-
         protected static int GetNbOfPointsToAllocateForLevel(int level)
         {
             return Random.Range(level - 1, (level * 5) + 1);
