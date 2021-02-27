@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using GameCharacter;
 
 namespace Battle
 {
@@ -8,7 +7,7 @@ namespace Battle
   {
     private Queue<Character> battleQueue;
 
-    public BattleQueue(List<Character> characters)
+    public BattleQueue(IEnumerable<Character> characters)
     {
       battleQueue = new Queue<Character>();
       var queueOrder = characters.OrderByDescending(c => c.Stats.Speed);
@@ -27,7 +26,7 @@ namespace Battle
         battleQueue.Enqueue(character);
     }
 
-    private Character GetCurrentCharacter()
+    public Character GetCurrentCharacter()
     {
       Character current = battleQueue.Peek();
 

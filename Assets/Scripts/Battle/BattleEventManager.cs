@@ -9,20 +9,20 @@ namespace Battle
     public class BattleEventManager : MonoBehaviour
     {
         //To remove once we have a factory
-        [SerializeField] private GameCharacter.Character baseEnemy;
+        [SerializeField] private Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
     
         public static BattleEventManager Current;
     
-        public GameCharacter.Character[] characters;
-        private List<int> battleQueue;
+        public Character[] characters;
+        private BattleQueue battleQueue;
         private bool isWaitingBetweenAttacks;
 
         private void Awake()
         {
             Current = this;
-            characters = new GameCharacter.Character[6];
-            battleQueue = new List<int>();
+            characters = new Character[6];
+            battleQueue = new BattleQueue(characters);
             isWaitingBetweenAttacks = false;
         }
 
@@ -36,8 +36,6 @@ namespace Battle
         public void OnAttack(Attack attack)
         {
             onAttack?.Invoke(attack, IsCriticalHit());
-            battleQueue.Add(battleQueue[0]);
-            battleQueue.RemoveAt(0);
             StartCoroutine(WaitForAttackToEnd());
         }
 
@@ -46,6 +44,7 @@ namespace Battle
             isWaitingBetweenAttacks = true;
             yield return new WaitForSeconds(timeBetweenAttackInSeconds);
             isWaitingBetweenAttacks = false;
+            battleQueue.EndTurn();
         }
 
         private void NewBattle()
@@ -55,56 +54,6 @@ namespace Battle
                 characters[i] = Instantiate(baseEnemy, Vector3.zero, Quaternion.identity);
                 characters[i].playerId = i;
             }
-            //Add character speed as parameter
-            FillBattleQueue();
-        }
-
-        private void FillBattleQueue()
-        {
-            for (int i = 0; i < 6; i++)
-            {
-                if(characters[i] != null && !characters[i].IsDead)
-                    battleQueue.Add(i);
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                int iSpeed = characters[battleQueue[i]].Stats.Speed;
-                for (int j = i-1; j >= 0; j--)
-                {
-                    int jSpeed = characters[battleQueue[j]].Stats.Speed;
-                    if (iSpeed > jSpeed || (iSpeed == jSpeed && Random.Range(1,3) == 1))
-                    {
-                        battleQueue.Insert(j, battleQueue[i]);
-                        battleQueue.RemoveAt(i+1);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-        }
-
-        public int GetCurrentAttackerId()
-        {
-            if (!isWaitingBetweenAttacks)
-                return battleQueue[0];
-            return -1;
-        }
-
-        public void KillTarget()
-        {
-            foreach (GameCharacter.Character character in characters)
-            {
-                if (character.IsDead)
-                    battleQueue.Remove(character.playerId);
-            }
-        
-            if(characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
-                EndBattle();
-            else if(characters[0].IsDead && characters[1].IsDead && characters[2].IsDead)
-                EndGame();
         }
 
         private void EndBattle()
@@ -132,7 +81,7 @@ namespace Battle
 
         private bool IsCriticalHit()
         {
-            return Random.Range(0.0f, 100.0f) <= characters[GetCurrentAttackerId()].Stats.CriticalChance;
+            return Random.Range(0.0f, 100.0f) <= battleQueue.GetCurrentCharacter().Stats.CriticalChance;
         }
     }
 }

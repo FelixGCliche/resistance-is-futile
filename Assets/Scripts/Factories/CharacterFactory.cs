@@ -1,7 +1,5 @@
 using Equipment;
 using Stats;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Factory
@@ -22,7 +20,7 @@ namespace Factory
       return level * STAT_BONUS_BY_LEVEL;
     }
 
-    public static GameCharacter.Character CreateNewCharacterByType(int level, CharacterType characterType)
+    public static Character CreateNewCharacterByType(int level, CharacterType characterType)
     {
       int[] baseStats = new int[9];
       Weapon weapon = WeaponFactory.CreateStartingWeapon(WeaponType.NONE);
@@ -70,7 +68,7 @@ namespace Factory
         EquipementFactory.CreateStartingEquipementWithType(EquipementType.NECKLACE),
         EquipementFactory.CreateStartingEquipementWithType(EquipementType.RING),
         weapon);
-      return new GameCharacter.Character(characterStats, characterEquipementManager);
+      return new Character(characterStats, characterEquipementManager);
     }
   }
 }

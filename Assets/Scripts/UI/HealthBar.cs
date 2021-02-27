@@ -7,13 +7,13 @@ namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private GameCharacter.Character character;
+        [SerializeField] private Character character;
         private Slider healthSlider;
         private TextMeshProUGUI healthText;
         private int maxHealth;
         private int currentHealth;
 
-        public GameCharacter.Character Character
+        public Character Character
         {
             set => character = value;
         }
