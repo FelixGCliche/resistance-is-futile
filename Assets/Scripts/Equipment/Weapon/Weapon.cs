@@ -12,5 +12,10 @@ namespace Equipment
         public int BaseDamage { get; }
         public DamageType DamageType { get; }
         public WeaponType WeaponType { get; }
+
+        public Attack GetAttack(int target)
+        {
+            return new Attack(target, BaseDamage, DamageType);
+        }
     }
 }
