@@ -1,6 +1,8 @@
+using System;
 using Equipment;
 using Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Character : MonoBehaviour
 {
@@ -11,9 +13,14 @@ public class Character : MonoBehaviour
   private CharacterEquipementManager currentEquipement;
   private CharacterStats stats;
   private bool isDead = false;
-  public bool IsDead => isDead;
 
   public CharacterStats Stats => stats;
+  public bool IsDead => isDead;
+  
+  private void Awake()
+  {
+    stats = gameObject.AddComponent<CharacterStats>();
+  }
 
   // Start is called before the first frame update
   void Start()
@@ -51,7 +58,7 @@ public class Character : MonoBehaviour
       {
         //Need enemy Ai
         Debug.Log("Player " + playerId + " attacks player " + 1);
-        OnAttack(currentEquipement.Weapon.GetAttack(Random.Range(1, 3)));
+        OnAttack(currentEquipement.Weapon.GetAttack(Random.Range(1, 4)));
       }
     }
   }
