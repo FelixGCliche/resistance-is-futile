@@ -26,17 +26,12 @@ public class Character : MonoBehaviour
   private void Awake()
   {
     currentEquipement.SwapEquipementWithoutStatUpdate(WeaponFactory.CreateNewWeapon(1));
-    currentEquipement.SwapEquipementWithoutStatUpdate(
-      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.RING));
-    currentEquipement.SwapEquipementWithoutStatUpdate(
-      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.BOOTS));
-    currentEquipement.SwapEquipementWithoutStatUpdate(
-      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.HELMET));
-    currentEquipement.SwapEquipementWithoutStatUpdate(
-      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.GREAVES));
-    currentEquipement.SwapEquipementWithoutStatUpdate(
-      EquipementFactory.CreateNewEquipementWithType(1, EquipementType.NECKLACE));
-    currentEquipement.SwapEquipement(EquipementFactory.CreateNewEquipementWithType(1, EquipementType.CHESTPIECE));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipement(1, EquipementType.RING));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipement(1, EquipementType.BOOTS));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipement(1, EquipementType.HELMET));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipement(1, EquipementType.GREAVES));
+    currentEquipement.SwapEquipementWithoutStatUpdate(EquipementFactory.CreateNewEquipement(1, EquipementType.NECKLACE));
+    currentEquipement.SwapEquipement(EquipementFactory.CreateNewEquipement(1, EquipementType.CHESTPIECE));
   }
 
   // Start is called before the first frame update
