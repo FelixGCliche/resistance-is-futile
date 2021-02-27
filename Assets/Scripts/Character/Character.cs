@@ -10,6 +10,8 @@ public class Character : MonoBehaviour
 
   private CharacterEquipementManager currentEquipement;
   private CharacterStats stats;
+  private bool isDead = false;
+  public bool IsDead => isDead;
 
   public CharacterStats Stats => stats;
 
@@ -17,7 +19,7 @@ public class Character : MonoBehaviour
   void Start()
   {
     if (isPlayer)
-      BattleEventManager.current.players[playerId - 1] = this;
+      BattleEventManager.current.characters[playerId - 1] = this;
     BattleEventManager.current.onAttack += OnAttack;
   }
 
@@ -58,5 +60,10 @@ public class Character : MonoBehaviour
   {
     if (attack.Target == playerId)
       stats.OnAttack(attack);
+  }
+
+  public void Die()
+  {
+    isDead = true;
   }
 }

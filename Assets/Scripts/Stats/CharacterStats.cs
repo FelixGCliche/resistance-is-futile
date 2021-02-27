@@ -1,3 +1,4 @@
+using System.Collections;
 using Equipment;
 using UnityEngine;
 using Random = System.Random;
@@ -38,6 +39,8 @@ namespace Stats
 
     private Random rnd;
 
+    private int characterId;
+
     public void OnAttack(Attack attack)
     {
       if (rnd.NextDouble() <= DodgeChance)
@@ -56,6 +59,12 @@ namespace Stats
         damage *= 2;
 
       vitality -= damage - armorValue;
+
+      if (vitality <= 0) ;
+        //Remove comment and ; above once stat contains id
+        //BattleEventManager.current.KillTarget(id);
     }
+    
+    
   }
 }
