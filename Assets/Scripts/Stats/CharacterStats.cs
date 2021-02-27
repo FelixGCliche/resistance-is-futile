@@ -17,8 +17,8 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int strength = 1;
     [SerializeField] [Range(0, 100)] private int intelligence = 1;
 
-    [SerializeField] [Range(0.0f, 1.0f)] private float dodgeChance = 0.05f;
-    [SerializeField] [Range(0.0f, 1.0f)] private float criticalChance = 0.05f;
+    [SerializeField] [Range(0, 100)] private float dodgeChance = 5;
+    [SerializeField] [Range(0, 100)] private float criticalChance = 5;
 
     [SerializeField] [Range(0, 100)] private int physicalArmor = 0;
     [SerializeField] [Range(0, 100)] private int magicArmor = 0;
@@ -40,7 +40,10 @@ namespace Stats
 
     public void Hurt(int damage)
     {
-      health = Mathf.Clamp(health - damage, 0, maxHealth);
+      vitality = Mathf.Clamp(vitality - damage, 0, maxVitality);
+      Debug.Log("Health : " + vitality + "/" + maxVitality);
+      if (vitality <= 0)
+        BattleEventManager.current.KillTarget();
     }
 
 

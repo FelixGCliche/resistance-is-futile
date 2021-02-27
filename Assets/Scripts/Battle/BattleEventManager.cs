@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq.Expressions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -132,6 +130,6 @@ public class BattleEventManager : MonoBehaviour
 
     private bool IsCriticalHit()
     {
-        return Random.value <= characters[GetCurrentAttackerId()].Stats.CriticalChance;
+        return Random.Range(0.0f, 100.0f) <= characters[GetCurrentAttackerId()].Stats.CriticalChance;
     }
 }
