@@ -14,9 +14,7 @@ namespace Factory
 
         public static Weapon CreateStartingWeapon(WeaponType weaponType)
         {
-            int[] statsArray = GetRandomStatsArray(1);
-            int weaponDamage = Random.Range(1, (1 * 5) + 1);
-            return new Weapon(weaponDamage, GetDamageType(), weaponType, EquipementType.WEAPON, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
+            return new Weapon(5, GetDamageType(), weaponType, EquipementType.WEAPON, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
         private static DamageType GetDamageType()

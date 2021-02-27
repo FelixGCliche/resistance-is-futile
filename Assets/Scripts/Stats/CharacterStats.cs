@@ -1,3 +1,4 @@
+using Battle;
 using Equipment;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -56,8 +57,6 @@ namespace Stats
     {
       health = Mathf.Clamp(health - damage, 0, maxHealth);
       Debug.Log("Health : " + health + "/" + maxHealth);
-      if (health <= 0)
-        BattleEventManager.current.KillTarget();
     }
   }
 }
