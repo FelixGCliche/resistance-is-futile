@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.Linq.Expressions;
 using UnityEngine;
 
 public class BattleEventManager : MonoBehaviour
@@ -11,15 +12,13 @@ public class BattleEventManager : MonoBehaviour
     
     public static BattleEventManager current;
     
-    public Character[] players;
-    private Character[] enemies;
+    public Character[] characters;
     private List<int> battleQueue;
 
     private void Awake()
     {
         current = this;
-        players = new Character[3];
-        enemies = new Character[3];
+        characters = new Character[6];
         battleQueue = new List<int>();
         NewBattle();
     }
@@ -35,10 +34,10 @@ public class BattleEventManager : MonoBehaviour
 
     private void NewBattle()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 4; i < 7; i++)
         {
-            enemies[i] = Instantiate(baseEnemy, Vector3.zero, Quaternion.identity);
-            enemies[i].playerId = i + 4;
+            characters[i] = Instantiate(baseEnemy, Vector3.zero, Quaternion.identity);
+            characters[i].playerId = i;
         }
         //Add character speed as parameter
         FillBattleQueue();
@@ -59,5 +58,39 @@ public class BattleEventManager : MonoBehaviour
     public int GetCurrentAttackerId()
     {
         return battleQueue[0];
+    }
+
+    public void KillTarget(int target)
+    {
+        battleQueue.Remove(target - 1);
+        characters[target-1].Die();
+        
+        if(characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
+            EndBattle();
+        else if(characters[0].IsDead && characters[1].IsDead && characters[2].IsDead)
+            EndGame();
+    }
+
+    private void EndBattle()
+    {
+        //Do loot drop
+        
+        DestroyEnemies();
+        NewBattle();
+    }
+
+    private void EndGame()
+    {
+        //End game
+    }
+
+    private void DestroyEnemies()
+    {
+        Destroy(characters[3]);
+        characters[3] = null;
+        Destroy(characters[4]);
+        characters[4] = null;
+        Destroy(characters[5]);
+        characters[5] = null;
     }
 }
