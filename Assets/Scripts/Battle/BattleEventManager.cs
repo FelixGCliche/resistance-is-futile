@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,35 +23,47 @@ namespace Battle
         private void Awake()
         {
             characters = new Character[6];
+            CreateCharacters();
             NewBattle();
-            battleQueue = new BattleQueue(characters);
             isWaitingBetweenAttacks = false;
             Current = this;
+        }
+
+        private void CreateCharacters()
+        {
+            characters[0] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WARRIOR);
+            characters[0].playerId = 0;
+            characters[1] = CharacterFactory.CreateStartingCharacterByType(CharacterType.HUNTRESS);
+            characters[1].playerId = 1;
+            characters[2] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WIZARD);
+            characters[2].playerId = 2;
         }
 
         public event Action<Attack, bool> onAttack;
 
         public void OnAttack(Attack attack)
         {
-            onAttack?.Invoke(attack, IsCriticalHit());
+            characters[attack.Target].OnDefend(attack, IsCriticalHit());
+            //onAttack?.Invoke(attack, IsCriticalHit());
             StartCoroutine(WaitForAttackToEnd());
         }
 
         private IEnumerator WaitForAttackToEnd()
         {
-            isWaitingBetweenAttacks = true;
             yield return new WaitForSeconds(timeBetweenAttackInSeconds);
-            isWaitingBetweenAttacks = false;
             battleQueue.EndTurn();
+            StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
         }
 
         private void NewBattle()
         {
             for (int i = 3; i < 6; i++)
             {
-                characters[i] = Instantiate(baseEnemy, Vector3.zero, Quaternion.identity);
+                characters[i] = CharacterFactory.CreateEnemy(1);
                 characters[i].playerId = i;
             }
+            battleQueue = new BattleQueue(characters);
+            StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
         }
 
         private void EndBattle()
