@@ -9,7 +9,7 @@ namespace Stats
     [SerializeField] [Range(0, 100)] private int level = 1;
 
     [SerializeField] [Range(0, 100)] private int vitality = 1;
-    [SerializeField] private int maxVitality = 1;
+    [SerializeField] private int maxVitality = 10;
 
     [SerializeField] [Range(0, 100)] private int speed = 1;
     [SerializeField] [Range(0, 100)] private int dexterity = 1;
