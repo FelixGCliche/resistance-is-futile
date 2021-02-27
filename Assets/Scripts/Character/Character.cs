@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using Battle;
 using Equipment;
 using Factory;
@@ -71,9 +72,9 @@ public class Character : MonoBehaviour
     {
         int totalDamage = 0;
 
-        if (IsHit())
-        {
-            totalDamage = attack.DamageValue;
+    if (IsHit())
+    {
+      totalDamage = Mathf.CeilToInt(attack.DamageValue * GetDamageStatMultiplier(attack.WeaponType));
 
             if (isCriticalHit)
                 totalDamage *= 2;
@@ -87,9 +88,24 @@ public class Character : MonoBehaviour
         return totalDamage;
     }
 
-    private bool IsHit()
+  private bool IsHit()
+  {
+    return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
+    // Mettre event rétroaction "Evade"
+  }
+
+  private float GetDamageStatMultiplier(WeaponType weaponType)
+  {
+    switch (weaponType)
     {
-        return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
-        // Mettre event rétroaction "Evade"
+      case WeaponType.INTELLIGENCE:
+        return 1.0f + (float)stats.Intelligence / 100;
+      case WeaponType.STRENGTH:
+        return 1.0f+ (float)stats.Strength / 100;
+      case WeaponType.DEXTERITY:
+        return 1.0f+ (float)stats.Dexterity / 100;
     }
+
+    return 1.0f;
+  }
 }
