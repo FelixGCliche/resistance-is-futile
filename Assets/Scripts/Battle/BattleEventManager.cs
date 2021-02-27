@@ -50,18 +50,11 @@ public class BattleEventManager : MonoBehaviour
 
     private void FillBattleQueue()
     {
-        if(characters[0] != null && !characters[0].IsDead)
-            battleQueue.Add(1);
-        if(characters[1] != null && !characters[1].IsDead)
-            battleQueue.Add(2);
-        if(characters[2] != null && !characters[2].IsDead)
-            battleQueue.Add(3);
-        if(characters[3] != null && !characters[3].IsDead)
-            battleQueue.Add(4);
-        if(characters[4] != null && !characters[4].IsDead)
-            battleQueue.Add(5);
-        if(characters[5] != null && !characters[5].IsDead)
-            battleQueue.Add(6);
+        for (int i = 0; i < 6; i++)
+        {
+            if(characters[i] != null && !characters[i].IsDead)
+                battleQueue.Add(i+1);
+        }
 
         for (int i = 1; i < 6; i++)
         {
