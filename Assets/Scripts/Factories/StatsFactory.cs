@@ -10,9 +10,9 @@ namespace Factory
     {
         const int STAT_BONUS_BY_LEVEL = 3;
 
-        private static int[] wizardBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        private static int[] warriorBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        private static int[] huntressBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        private static int[] wizardBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
+        private static int[] warriorBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
+        private static int[] huntressBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
         private static int[] goblinBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         private static int[] flyingEyeBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
         private static int[] skeletonBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
