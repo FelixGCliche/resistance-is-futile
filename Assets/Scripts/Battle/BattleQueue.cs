@@ -40,7 +40,10 @@ namespace Battle
       Character current = battleQueue.Peek();
 
       while (current.IsDead)
-        current = battleQueue.Dequeue();
+      {
+        battleQueue.Dequeue();
+        current = battleQueue.Peek();
+      }
 
       return current;
     }
