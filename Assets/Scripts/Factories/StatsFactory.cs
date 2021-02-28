@@ -10,12 +10,12 @@ namespace Factory
     {
         const int STAT_BONUS_BY_LEVEL = 3;
 
-        private static int[] wizardBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
-        private static int[] warriorBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
-        private static int[] huntressBaseStats = new int[9] { 1, 1, 1, 10, 1, 1, 1, 1, 1 };
-        private static int[] goblinBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        private static int[] flyingEyeBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-        private static int[] skeletonBaseStats = new int[9] { 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+        private static int[] wizardBaseStats = new int[9] { 20, 0, 1, 3, 1, 1, 3, 5, 5 };
+        private static int[] warriorBaseStats = new int[9] { 25, 1, 0, 2, 3, 1, 1, 5, 3 };
+        private static int[] huntressBaseStats = new int[9] { 20, 0, 0, 5, 1, 3, 1, 5, 7 };
+        private static int[] goblinBaseStats = new int[9] { 15, 0, 0, 2, 1, 1, 1, 5, 7 };
+        private static int[] flyingEyeBaseStats = new int[9] { 20, 0, 1, 1, 1, 1, 1, 5, 5 };
+        private static int[] skeletonBaseStats = new int[9] { 20, 1, 0, 1, 1, 1, 1, 5, 3 };
 
         private static int GetNbOfPointsToAllocateForLevel(int level)
         {
