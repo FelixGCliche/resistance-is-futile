@@ -26,6 +26,7 @@ namespace UI
 
     private void Update()
     {
+      currentHealth = character.Stats.Health;
       healthSlider.value = currentHealth;
       healthText.text = currentHealth + " / " + maxHealth;
     }
