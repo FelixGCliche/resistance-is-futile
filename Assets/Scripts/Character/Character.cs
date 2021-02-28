@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
             else if (attack.DamageType == DamageType.MAGIC)
                 totalDamage -= stats.MagicArmor;
         }
-
+        animator.Play("Base Layer.Hit", 0, 0);
         return totalDamage;
     }
 
