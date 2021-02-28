@@ -7,7 +7,7 @@ namespace UI
 {
     public class HealthBar : MonoBehaviour
     {
-        [SerializeField] private Character character;
+        private Character character;
         private Slider healthSlider;
         private TextMeshProUGUI healthText;
         private int maxHealth;
