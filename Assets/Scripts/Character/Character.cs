@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     [SerializeField] public int playerId = 0;
     [SerializeField] private CharacterStats stats;
     [SerializeField] private CharacterEquipementManager currentEquipement;
+    private Animator animator;
 
     public CharacterStats Stats => stats;
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
@@ -19,6 +20,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         BattleEventManager.Current.characters[playerId] = this;
+        animator = GetComponent<Animator>();
     }
 
     public void SetStatsAndEquipment(CharacterStats stats, CharacterEquipementManager currentEquipement)
@@ -63,6 +65,7 @@ public class Character : MonoBehaviour
             Debug.Log("Player " + playerId + " attacks player " + target);
             BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(target));
         }
+        animator.Play("Base Layer.Attack", 0, 0);
     }
 
     public void OnDefend(Attack attack, bool isCriticalHit)
