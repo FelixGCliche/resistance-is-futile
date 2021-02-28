@@ -130,23 +130,12 @@ namespace Battle
             //Do loot drop
         
             GainExperience();
-            DestroyEnemies();
             NewBattle();
         }
 
         private void EndGame()
         {
             //End game
-        }
-
-        private void DestroyEnemies()
-        {
-            Destroy(characters[3]);
-            characters[3] = null;
-            Destroy(characters[4]);
-            characters[4] = null;
-            Destroy(characters[5]);
-            characters[5] = null;
         }
 
         private bool IsCriticalHit()
