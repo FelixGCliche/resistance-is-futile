@@ -6,20 +6,27 @@ using UnityEngine.UI;
 
 namespace UI
 {
-  [RequireComponent(typeof(Slider))]
-  [RequireComponent(typeof(TextMeshProUGUI))]
   public class ExperienceBar : MonoBehaviour
   {
     private Slider experienceSlider;
     private TextMeshProUGUI experienceText;
-    
-    private int currentExperienceTreshold = BattleEventManager.Current.CurrentExperienceTreshold;
-    private int experience = BattleEventManager.Current.Experience;
+
+    private int currentExperienceTreshold;
+    private int experience;
 
     private void Awake()
     {
       experienceSlider = GetComponent<Slider>();
-      experienceText = GetComponent<TextMeshProUGUI>();
+      experienceText = GetComponentInChildren<TextMeshProUGUI>();
+      
+      experienceSlider.minValue = 0;
+    }
+
+    private void Start()
+    {
+      currentExperienceTreshold = BattleEventManager.Current.CurrentExperienceTreshold;
+      experience = BattleEventManager.Current.Experience;
+      experienceSlider.maxValue = currentExperienceTreshold;
     }
 
     private void Update()
