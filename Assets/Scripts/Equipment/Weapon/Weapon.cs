@@ -10,6 +10,8 @@ namespace Equipment
             DamageType = damageType;
             WeaponType = weaponType;
             AttackType = attackType;
+            if (attackType == AttackType.AOE)
+                BaseDamage /= 2;
         }
 
         public int BaseDamage { get; }
