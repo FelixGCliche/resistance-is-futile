@@ -392,6 +392,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090384100773706330, guid: 949940565424ebe42b218b9714f67673, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -30
+      objectReference: {fileID: 0}
     - target: {fileID: 5090384101894160282, guid: 949940565424ebe42b218b9714f67673, type: 3}
       propertyPath: m_Name
       value: HUDCanvas

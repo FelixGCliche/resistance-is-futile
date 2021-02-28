@@ -184,6 +184,8 @@ namespace Battle
                         Debug.Log("Equippement discarded");
                         yield return new WaitForSeconds(1f);
                     }
+                    
+                    yield return new WaitForSecondsRealtime(0.2f);
             }
 
             ResetCharacters();

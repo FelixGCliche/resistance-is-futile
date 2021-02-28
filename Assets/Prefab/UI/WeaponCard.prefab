@@ -353,7 +353,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 16
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -760,6 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72a1cb78a078407888e3f0161ff61868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  equipmentName: {fileID: 1190978134616350277}
   baseDamage: {fileID: 7198184883223198634}
   damageType: {fileID: 8466726710921341745}
   attackType: {fileID: 6544909206309666494}
