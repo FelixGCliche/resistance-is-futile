@@ -206,6 +206,11 @@ namespace Battle
             int totalExperineceGain = baseExperienceGain +
                                       Mathf.CeilToInt(baseExperienceGain * battleExperienceMultiplier * level);
             experience += totalExperineceGain;
+            if (experience >= CurrentExperienceTreshold)
+            {
+                experience -= CurrentExperienceTreshold;
+                level++;
+            }
         }
 
         private void ResetCharacters()
