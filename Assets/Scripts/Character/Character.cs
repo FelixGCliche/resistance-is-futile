@@ -64,8 +64,7 @@ public class Character : MonoBehaviour
 
     public void OnDefend(Attack attack, bool isCriticalHit)
     {
-        if (attack.Target == playerId)
-            stats.Hurt(GetTotalDamage(attack, isCriticalHit));
+        stats.Hurt(GetTotalDamage(attack, isCriticalHit));
     }
 
     private int GetTotalDamage(Attack attack, bool isCriticalHit)

@@ -1,3 +1,4 @@
+using Battle;
 using Equipment;
 using UnityEngine;
 
@@ -9,12 +10,12 @@ namespace Factory
         {
             int[] statsArray = GetRandomStatsArray(level);
             int weaponDamage = Random.Range(level, (level * 5)+1);
-            return new Weapon(weaponDamage, GetDamageType(), GetWeaponType(), EquipementType.WEAPON, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
+            return new Weapon(weaponDamage, GetDamageType(), GetWeaponType(), GetAttackType(), EquipementType.WEAPON, statsArray[0], statsArray[1], statsArray[2], statsArray[3], statsArray[4], statsArray[5], statsArray[6], statsArray[7], statsArray[8]);
         }
 
         public static Weapon CreateStartingWeapon(WeaponType weaponType)
         {
-            return new Weapon(5, GetDamageType(), weaponType, EquipementType.WEAPON, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return new Weapon(5, GetDamageType(), weaponType, GetAttackType(), EquipementType.WEAPON, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
         private static DamageType GetDamageType()
@@ -41,6 +42,24 @@ namespace Factory
                     return WeaponType.STRENGTH;
             }
             return WeaponType.NONE;
+        }
+
+        private static AttackType GetAttackType()
+        {
+            switch (Random.Range(0, 5))
+            {
+                case 0:
+                    return AttackType.SINGLE_TARGET;
+                case 1:
+                    return AttackType.AOE;
+                case 2:
+                    return AttackType.SPLASH;
+                case 3:
+                    return AttackType.SPLASH_UP;
+                case 4:
+                    return AttackType.SPLASH_DOWN;
+            }
+            return AttackType.NONE;
         }
     }
 }
