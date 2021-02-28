@@ -189,6 +189,7 @@ namespace Battle
                     }
             }
 
+            ResetCharacters();
             NewBattle();
         }
 
@@ -207,6 +208,15 @@ namespace Battle
             int totalExperineceGain = baseExperienceGain +
                                       Mathf.CeilToInt(baseExperienceGain * battleExperienceMultiplier * level);
             experience += totalExperineceGain;
+        }
+
+        private void ResetCharacters()
+        {
+            foreach (var character in characters)
+            {
+                character.Stats.FullHeal();
+                character.ResetAnimation();
+            }
         }
     }
 }
