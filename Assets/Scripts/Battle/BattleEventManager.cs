@@ -150,9 +150,12 @@ namespace Battle
                 else
                     drops[i] = EquipementFactory.CreateNewEquipement(level, type);
             }
-
+            
+            SwitchWeaponMenu.Current.ActivateSwitchWeaponMenu();
+            
             for (int i = 0; i < 3; i++)
             {
+                SwitchWeaponMenu.Current.GetNewCards(drops[i]);
                 Debug.Log("What do you want to do with : " + drops[i].Type);
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Alpha1) ||
                                                  Input.GetKeyDown(KeyCode.Alpha2) ||
@@ -185,11 +188,12 @@ namespace Battle
 
             ResetCharacters();
             NewBattle();
+            SwitchWeaponMenu.Current.DeactivateSwitchWeaponMenu();
         }
 
         private void EndGame()
         {
-            //End game
+            DeathScreen.Current.ActivateDeathScreen();
         }
 
         private bool IsCriticalHit()
