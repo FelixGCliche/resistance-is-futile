@@ -6,7 +6,7 @@ using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Character : MonoBehaviour
+public class Character: MonoBehaviour
 {
     [SerializeField] public int playerId = 0;
     [SerializeField] private CharacterStats stats;
@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public CharacterStats Stats => stats;
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
     public bool IsDead => stats.IsDead;
-
+    
     private void Start()
     {
         BattleEventManager.Current.characters[playerId] = this;

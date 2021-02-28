@@ -81,34 +81,6 @@ namespace Equipment
       UpdateBoosts();
     }
 
-    public void SwapEquipementWithoutStatUpdate(Equipement newEquippable)
-    {
-      switch (newEquippable.Type)
-      {
-        case EquipementType.HELMET:
-          helmet = newEquippable;
-          break;
-        case EquipementType.CHESTPIECE:
-          chestPiece = newEquippable;
-          break;
-        case EquipementType.GREAVES:
-          greaves = newEquippable;
-          break;
-        case EquipementType.BOOTS:
-          boots = newEquippable;
-          break;
-        case EquipementType.NECKLACE:
-          necklace = newEquippable;
-          break;
-        case EquipementType.RING:
-          ring = newEquippable;
-          break;
-        case EquipementType.WEAPON:
-          weapon = (Weapon) newEquippable;
-          break;
-      }
-    }
-
     private void UpdateBoosts()
     {
       CalculateEquipementSpeedBoost();
