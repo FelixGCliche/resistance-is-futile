@@ -6,12 +6,18 @@ namespace Utils.Const
   {
     public static Vector3[] Positions = new[]
     {
-      new Vector3(545.05f, -289.27f, 0),
-      new Vector3(545.0f, -290.0f, 0),
-      new Vector3(541.04f, -292.96f, 0),
-      new Vector3(545.05f, -289.27f, 0),
-      new Vector3(552.22f, -290.0f, 0),
-      new Vector3(554.01f, -292.96f, 0)
+      // Player top
+      new Vector3(-5, -2.5f, 0),
+      // Player middle
+      new Vector3(-4, -0.5f, 0),
+      // Player bottom
+      new Vector3(-3, 1.5f, 0),
+      // Enemy top
+      new Vector3(5, -2.5f, 0),
+      // Enemy middle
+      new Vector3(4, -0.5f, 0),
+      // Enemy bottom
+      new Vector3(3, 1.5f, 0)
     };
   }
 }

@@ -7,10 +7,10 @@ using Random = UnityEngine.Random;
 
 public class Character : MonoBehaviour
 {
-  [SerializeField] public int playerId = 0;
-  [SerializeField] private CharacterStats stats;
-  [SerializeField] private CharacterEquipementManager currentEquipement;
+  private CharacterStats stats;
+  private CharacterEquipementManager currentEquipement;
   private Animator animator;
+  private int playerId = 0;
 
   public CharacterStats Stats => stats;
   public CharacterEquipementManager CurrentEquipement => currentEquipement;
