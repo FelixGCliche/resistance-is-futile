@@ -23,7 +23,6 @@ namespace Battle
         private bool isWaitingBetweenAttacks;
         private int experience = 0;
         private int level = 0;
-        private int levelUp = 0;
 
         public static BattleEventManager Current;
     
@@ -33,7 +32,7 @@ namespace Battle
         public int Experience => experience;
         public int Level => level;
 
-        public int LevelUp => level * levelUpMultiplier;
+        public int CurrentExperienceTreshold => level * levelUpMultiplier;
 
         private void Awake()
         {
