@@ -1,22 +1,27 @@
-using System.Collections;
 using System;
+using System.Collections;
 using Battle;
 using Equipment;
-using Factory;
 using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private int level = 1;
     [SerializeField] public int playerId = 0;
     [SerializeField] private CharacterStats stats;
     [SerializeField] private CharacterEquipementManager currentEquipement;
+    private Animator animator;
 
     public CharacterStats Stats => stats;
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
     public bool IsDead => stats.IsDead;
+
+    private void Start()
+    {
+        BattleEventManager.Current.characters[playerId] = this;
+        animator = GetComponent<Animator>();
+    }
 
     public void SetStatsAndEquipment(CharacterStats stats, CharacterEquipementManager currentEquipement)
     {
@@ -60,12 +65,12 @@ public class Character : MonoBehaviour
             Debug.Log("Player " + playerId + " attacks player " + target);
             BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(target));
         }
+        animator.Play("Base Layer.Attack", 0, 0);
     }
 
     public void OnDefend(Attack attack, bool isCriticalHit)
     {
-        if (attack.Target == playerId)
-            stats.Hurt(GetTotalDamage(attack, isCriticalHit));
+        stats.Hurt(GetTotalDamage(attack, isCriticalHit));
     }
 
     private int GetTotalDamage(Attack attack, bool isCriticalHit)
@@ -90,7 +95,7 @@ public class Character : MonoBehaviour
 
   private bool IsHit()
   {
-    return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
+    return Random.Range(0.0f, 100.0f) > stats.DodgeChance;
     // Mettre event rétroaction "Evade"
   }
 
