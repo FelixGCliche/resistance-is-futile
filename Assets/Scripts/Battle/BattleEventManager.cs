@@ -37,11 +37,11 @@ namespace Battle
 
         private void Awake()
         {
+            Current = this;
             characters = new Character[6];
             CreateCharacters();
             NewBattle();
             isWaitingBetweenAttacks = false;
-            Current = this;
         }
 
         private void CreateCharacters()
