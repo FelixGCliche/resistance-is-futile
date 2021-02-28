@@ -42,7 +42,7 @@ namespace Battle
     private IEnumerator WaitForCharacterCreation()
     {
       for (int i = 0; i < characters.Length; i++)
-        CharacterFactory.CreateCharacterByType((CharacterType) i, i);
+        characters[i] = CharacterFactory.CreateCharacterByType((CharacterType) i, i);
 
       yield return new WaitUntil(() => characters[0] != null &&
                                        characters[1] != null &&
