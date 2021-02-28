@@ -11,7 +11,7 @@ namespace Battle
         [SerializeField] [Min(0)]
         private int levelUpMultiplier = 100;
         [SerializeField] [Min(0)]
-        private int battleExperienceGain = 100;
+        private int baseExperienceGain = 100;
         [SerializeField] [Range(0.0f, 1.0f)]
         private float battleExperienceMultiplier = 0.1f;
         
@@ -34,7 +34,6 @@ namespace Battle
         public int Level => level;
 
         public int LevelUp => level * levelUpMultiplier;
-        public int BattleExperienceGain => battleExperienceGain + Mathf.CeilToInt(battleExperienceGain * battleExperienceMultiplier * level);
 
         private void Awake()
         {
@@ -84,6 +83,7 @@ namespace Battle
         {
             //Do loot drop
         
+            GainExperience();
             DestroyEnemies();
             NewBattle();
         }
@@ -107,7 +107,11 @@ namespace Battle
         {
             return Random.Range(0.0f, 100.0f) <= battleQueue.GetCurrentCharacter().Stats.CriticalChance;
         }
-        
-        private int 
+
+        private void GainExperience()
+        {
+            int totalExperineceGain = baseExperienceGain + Mathf.CeilToInt(baseExperienceGain * battleExperienceMultiplier * level);
+            experience += totalExperineceGain;
+        }
     }
 }
