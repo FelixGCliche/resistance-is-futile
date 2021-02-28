@@ -25,7 +25,7 @@ namespace UI
     private void Update()
     {
       experienceSlider.value = experience;
-      experienceText.text = String.Format("EXP: {0}/{1}", experience, currentExperienceTreshold);
+      experienceText.text = String.Format("{0}/{1} EXP", experience, currentExperienceTreshold);
     }
   }
 }
