@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Equipment;
 using Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,8 +16,6 @@ namespace Battle
         [SerializeField] [Range(0.0f, 1.0f)]
         private float battleExperienceMultiplier = 0.1f;
         
-        //To remove once we have a factory
-        [SerializeField] private Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
         
         private BattleQueue battleQueue;
@@ -38,25 +37,73 @@ namespace Battle
         {
             Current = this;
             characters = new Character[6];
+            isWaitingBetweenAttacks = false;
+            StartCoroutine(WaitForCharacterCreation());
+        }
+
+        private IEnumerator WaitForCharacterCreation()
+        {
+            yield return new WaitUntil(() => characters[0] != null && 
+                                         characters[1] != null && 
+                                         characters[2] != null &&
+                                         characters[3] != null && 
+                                         characters[4] != null && 
+                                         characters[5] != null);
             CreateCharacters();
             NewBattle();
-            isWaitingBetweenAttacks = false;
         }
 
         private void CreateCharacters()
         {
-            characters[0] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WARRIOR);
-            characters[0].playerId = 0;
-            characters[1] = CharacterFactory.CreateStartingCharacterByType(CharacterType.HUNTRESS);
-            characters[1].playerId = 1;
-            characters[2] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WIZARD);
-            characters[2].playerId = 2;
+            characters[0].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.WIZARD), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.WIZARD)); 
+            characters[1].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.WARRIOR), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.WARRIOR)); 
+            characters[2].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.HUNTRESS), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.HUNTRESS)); 
         }
 
         public void OnAttack(Attack attack)
         {
-            characters[attack.Target].OnDefend(attack, IsCriticalHit());
-            //onAttack?.Invoke(attack, IsCriticalHit());
+            switch (attack.AttackType)
+            {
+                case AttackType.SINGLE_TARGET:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.AOE:
+                    if (attack.Target < 3)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            characters[i].OnDefend(attack, IsCriticalHit());
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 3; i < 6; i++)
+                        {
+                            characters[i].OnDefend(attack, IsCriticalHit());
+                        }
+                    }
+                    break;
+                case AttackType.SPLASH:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 0 && attack.Target != 3)
+                        characters[attack.Target-1].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 2 && attack.Target != 5)
+                        characters[attack.Target+1].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.SPLASH_UP:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 0 && attack.Target != 3)
+                        characters[attack.Target-1].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.SPLASH_DOWN:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 2 && attack.Target != 5)
+                        characters[attack.Target+1].OnDefend(attack, IsCriticalHit());
+                    break;
+            }
             StartCoroutine(WaitForAttackToEnd());
         }
 
@@ -71,8 +118,8 @@ namespace Battle
         {
             for (int i = 3; i < 6; i++)
             {
-                characters[i] = CharacterFactory.CreateEnemy(1);
-                characters[i].playerId = i;
+                characters[i].SetStatsAndEquipment(StatsFactory.CreateEnemyStats(level),
+                    CharacterEquipementFactory.CreateEnemyEquipement(level));
             }
             battleQueue = new BattleQueue(characters);
             StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
@@ -83,23 +130,12 @@ namespace Battle
             //Do loot drop
         
             GainExperience();
-            DestroyEnemies();
             NewBattle();
         }
 
         private void EndGame()
         {
             //End game
-        }
-
-        private void DestroyEnemies()
-        {
-            Destroy(characters[3]);
-            characters[3] = null;
-            Destroy(characters[4]);
-            characters[4] = null;
-            Destroy(characters[5]);
-            characters[5] = null;
         }
 
         private bool IsCriticalHit()

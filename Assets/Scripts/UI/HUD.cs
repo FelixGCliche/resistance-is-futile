@@ -19,12 +19,9 @@ public class HUD : MonoBehaviour
     {
         StartCoroutine(WaitForEnabledEnemy());
     }
-    
 
     private IEnumerator WaitForEnabledEnemy()
     {
-        yield return new WaitForSecondsRealtime(2);
-        
         yield return new WaitUntil(() => BattleEventManager.Current.characters[0] != null && 
                                          BattleEventManager.Current.characters[1] != null && 
                                          BattleEventManager.Current.characters[2] != null &&
