@@ -62,21 +62,21 @@ public class Character : MonoBehaviour
             {
                 if (target == 0)
                 {
-                    if (BattleEventManager.Current.characters[1].IsDead)
+                    if (!BattleEventManager.Current.characters[1].IsDead)
                         target = 1;
                     else
                         target = 2;
                 }
                 else if (target == 1)
                 {
-                    if (BattleEventManager.Current.characters[2].IsDead)
+                    if (!BattleEventManager.Current.characters[2].IsDead)
                         target = 2;
                     else
                         target = 0;
                 }
                 else
                 {
-                    if (BattleEventManager.Current.characters[0].IsDead)
+                    if (!BattleEventManager.Current.characters[0].IsDead)
                         target = 0;
                     else
                         target = 1;
