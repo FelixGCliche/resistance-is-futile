@@ -46,7 +46,7 @@ namespace Factory
 
         private static AttackType GetAttackType()
         {
-            switch (Random.Range(0, 5))
+            switch (Random.Range(0, 2))
             {
                 case 0:
                     return AttackType.SINGLE_TARGET;
