@@ -12,16 +12,22 @@ public class SwitchWeaponMenu : MonoBehaviour
     [SerializeField] private WeaponCard weaponCardPlayer2;
     [SerializeField] private WeaponCard weaponCardPlayer3;
     
-    public static SwitchWeaponMenu current;
+    public static SwitchWeaponMenu Current;
 
     private void Awake()
     {
-        gameObject.SetActive(false);
+        Current = this;
+        DeactivateSwitchWeaponMenu();
     }
 
     public void ActivateSwitchWeaponMenu()
     {
         gameObject.SetActive(true);
+    }
+    
+    public void DeactivateSwitchWeaponMenu()
+    {
+        gameObject.SetActive(false);
     }
 
     public void GetNewCards(Equipement newEquipement)

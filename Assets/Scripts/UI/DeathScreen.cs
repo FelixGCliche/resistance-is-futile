@@ -12,6 +12,7 @@ public class DeathScreen : MonoBehaviour
 
     private void Awake()
     {
+        Current = this;
         gameObject.SetActive(false);
     }
 
@@ -25,6 +26,6 @@ public class DeathScreen : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(4);
         SceneManager.LoadScene("MainMenuScene");
-        SceneManager.UnloadSceneAsync("SampleSimple");
+        SceneManager.UnloadSceneAsync("SampleScene");
     }
 }

@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 8594031724197448684}
   - component: {fileID: 8594031724197448687}
   - component: {fileID: 8594031724197448686}
+  - component: {fileID: 3124293163382502061}
   m_Layer: 0
   m_Name: DeathScreen
   m_TagString: Untagged
@@ -221,5 +222,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a08e6f810fa540f7b93c4c2bb8b27f78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3124293163382502061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594031724197448672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2d8367f9d1441fbb0db5e3b7d80e2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

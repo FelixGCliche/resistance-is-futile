@@ -193,6 +193,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8395649584434641271}
     m_Modifications:
+    - target: {fileID: 2367681971828266549, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Text
+      value: Switch(3)
+      objectReference: {fileID: 0}
     - target: {fileID: 3035552408645382999, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_Name
       value: WeaponCardPlayer3
@@ -293,6 +297,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
 --- !u!224 &4342309139027984932 stripped
@@ -318,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8395649584434641271}
     m_Modifications:
+    - target: {fileID: 2367681971828266549, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Text
+      value: Switch(2)
+      objectReference: {fileID: 0}
     - target: {fileID: 3035552408645382999, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_Name
       value: WeaponCardPlayer2
@@ -418,6 +446,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
 --- !u!224 &2033179952709189341 stripped
@@ -445,7 +481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2367681971828266549, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_Text
-      value: Discard
+      value: Discard(4)
       objectReference: {fileID: 0}
     - target: {fileID: 3035552408645382999, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_Name
@@ -547,6 +583,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
 --- !u!224 &987685361257206205 stripped
@@ -572,6 +616,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8395649584434641271}
     m_Modifications:
+    - target: {fileID: 2367681971828266549, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Text
+      value: Switch(1)
+      objectReference: {fileID: 0}
     - target: {fileID: 3035552408645382999, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_Name
       value: WeaponCardPlayer1
@@ -670,6 +718,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4016361258956690328, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Transition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077108738830977722, guid: c71abd369425bc649ac23f9ea644cc15, type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
