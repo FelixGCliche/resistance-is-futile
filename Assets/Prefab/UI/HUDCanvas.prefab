@@ -113,11 +113,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2782610924609492300, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2782610924609492300, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2782610925335846460, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
       propertyPath: m_Pivot.x
@@ -206,6 +206,10 @@ PrefabInstance:
     - target: {fileID: 2782610925335846461, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
       propertyPath: m_Name
       value: LevelUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782610925335846461, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb59ca00274b7c04581942b42dc05f63, type: 3}
