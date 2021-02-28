@@ -19,7 +19,6 @@ public class HUD : MonoBehaviour
     {
         StartCoroutine(WaitForEnabledEnemy());
     }
-    
 
     private IEnumerator WaitForEnabledEnemy()
     {
