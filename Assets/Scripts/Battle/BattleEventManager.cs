@@ -8,17 +8,33 @@ namespace Battle
 {
     public class BattleEventManager : MonoBehaviour
     {
+        [SerializeField] [Min(0)]
+        private int levelUpMultiplier = 100;
+        [SerializeField] [Min(0)]
+        private int battleExperienceGain = 100;
+        [SerializeField] [Range(0.0f, 1.0f)]
+        private float battleExperienceMultiplier = 0.1f;
+        
         //To remove once we have a factory
         [SerializeField] private Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
-    
+        
+        private BattleQueue battleQueue;
+        private bool isWaitingBetweenAttacks;
+        private int experience = 0;
+        private int level = 0;
+        private int levelUp = 0;
+
         public static BattleEventManager Current;
     
         public Character[] characters;
         public Character currentCharacter => battleQueue.GetCurrentCharacter();
-        
-        private BattleQueue battleQueue;
-        private bool isWaitingBetweenAttacks;
+
+        public int Experience => experience;
+        public int Level => level;
+
+        public int LevelUp => level * levelUpMultiplier;
+        public int BattleExperienceGain => battleExperienceGain + Mathf.CeilToInt(battleExperienceGain * battleExperienceMultiplier * level);
 
         private void Awake()
         {
@@ -38,8 +54,6 @@ namespace Battle
             characters[2] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WIZARD);
             characters[2].playerId = 2;
         }
-
-        public event Action<Attack, bool> onAttack;
 
         public void OnAttack(Attack attack)
         {
@@ -93,5 +107,7 @@ namespace Battle
         {
             return Random.Range(0.0f, 100.0f) <= battleQueue.GetCurrentCharacter().Stats.CriticalChance;
         }
+        
+        private int 
     }
 }

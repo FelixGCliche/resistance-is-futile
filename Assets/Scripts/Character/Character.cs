@@ -1,15 +1,12 @@
 using System.Collections;
-using System;
 using Battle;
 using Equipment;
-using Factory;
 using Stats;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Character : MonoBehaviour
 {
-    [SerializeField] private int level = 1;
     [SerializeField] public int playerId = 0;
     [SerializeField] private CharacterStats stats;
     [SerializeField] private CharacterEquipementManager currentEquipement;
