@@ -1,4 +1,4 @@
-using Equipment;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,31 +6,21 @@ namespace UI
 {
   public class ArmorHudController : MonoBehaviour
   {
-    [SerializeField] private DamageType type = DamageType.NONE;
-
     private CharacterHudController characterHudController;
-    private TextMeshProUGUI armorValue;
 
-    private void Start()
+    [SerializeField] private TextMeshProUGUI armorValue;
+
+    private void Awake()
     {
-      armorValue = GetComponentInChildren<TextMeshProUGUI>();
       characterHudController = GetComponentInParent<CharacterHudController>();
     }
 
     private void Update()
     {
       if (armorValue != null)
-      {
-        switch (type)
-        {
-          case DamageType.PHYSICAL:
-            armorValue.text = characterHudController.Character.Stats.PhysicalArmor.ToString();
-            break;
-          case DamageType.MAGIC:
-            armorValue.text = characterHudController.Character.Stats.MagicArmor.ToString();
-            break;
-        }
-      }
+        armorValue.text = String.Format("{0} PHYSICAL : {1} MAGIC",
+          characterHudController.Character.Stats.PhysicalArmor,
+          characterHudController.Character.Stats.MagicArmor);
     }
   }
 }
