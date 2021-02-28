@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 2366725346778342162}
   - component: {fileID: 321605204110969793}
   m_Layer: 5
-  m_Name: LevelUI 1
+  m_Name: LevelUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 5/10 EXP
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9c758958ece4179478fe4391a31a0b39, type: 2}
   m_sharedMaterial: {fileID: 6933801814565109649, guid: 9c758958ece4179478fe4391a31a0b39, type: 2}
