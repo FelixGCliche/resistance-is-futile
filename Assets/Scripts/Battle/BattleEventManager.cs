@@ -82,8 +82,6 @@ namespace Battle
                         characters[attack.Target+1].OnDefend(attack, IsCriticalHit());
                     break;
             }
-            characters[attack.Target].OnDefend(attack, IsCriticalHit());
-            //onAttack?.Invoke(attack, IsCriticalHit());
             StartCoroutine(WaitForAttackToEnd());
         }
 
