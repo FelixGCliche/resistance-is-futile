@@ -125,6 +125,14 @@ namespace Battle
             StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
         }
 
+        public void VerifyBattleEnd()
+        {
+            if (characters[0].IsDead && characters[1].IsDead && characters[2].IsDead)
+                EndGame();
+            else if (characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
+                EndBattle();
+        }
+
         private void EndBattle()
         {
             //Do loot drop
