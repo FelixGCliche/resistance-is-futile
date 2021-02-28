@@ -142,4 +142,9 @@ public class Character : MonoBehaviour
 
     return 1.0f;
   }
+
+  public void ResetAnimation()
+  {
+      animator.Play("Base Layer.Idle", 0, 0);
+  }
 }
