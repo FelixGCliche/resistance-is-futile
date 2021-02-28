@@ -17,7 +17,6 @@ public class AnimationTest : MonoBehaviour
         {
             if (anim != null)
             {
-                // play Bounce but start at a quarter of the way though
                 anim.Play("Base Layer.Attack", 0, 0);
             }
         }
