@@ -2,13 +2,13 @@ namespace Equipment
 {
   public enum EquipementType
   {
-    HELMET,
-    CHESTPIECE,
-    GREAVES,
-    BOOTS,
-    WEAPON,
-    NECKLACE,
-    RING,
+    HELMET = 0,
+    CHESTPIECE = 1,
+    GREAVES = 2,
+    BOOTS = 3,
+    NECKLACE = 4,
+    RING = 5,
+    WEAPON = 6,
     NONE
   }
 }

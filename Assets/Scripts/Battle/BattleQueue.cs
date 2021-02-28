@@ -6,6 +6,7 @@ namespace Battle
   public struct BattleQueue
   {
     private Queue<Character> battleQueue;
+    private bool isInBattle;
 
     public BattleQueue(IEnumerable<Character> characters)
     {
@@ -17,6 +18,8 @@ namespace Battle
         if (!character.IsDead)
           battleQueue.Enqueue(character);
       }
+
+      isInBattle = true;
     }
 
     public void EndTurn()
@@ -31,12 +34,20 @@ namespace Battle
 
     public Character GetCurrentCharacter()
     {
+      if (!isInBattle)
+        return null;
+      
       Character current = battleQueue.Peek();
 
       while (current.IsDead)
         current = battleQueue.Dequeue();
 
       return current;
+    }
+
+    public void StopQueue()
+    {
+      isInBattle = false;
     }
   }
 }
