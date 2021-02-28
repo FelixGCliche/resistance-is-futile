@@ -62,6 +62,30 @@ public class Character : MonoBehaviour
         else
         {
             int target = Random.Range(0, 3);
+            if (BattleEventManager.Current.characters[target].IsDead)
+            {
+                if (target == 0)
+                {
+                    if (BattleEventManager.Current.characters[1].IsDead)
+                        target = 1;
+                    else
+                        target = 2;
+                }
+                else if (target == 1)
+                {
+                    if (BattleEventManager.Current.characters[2].IsDead)
+                        target = 2;
+                    else
+                        target = 0;
+                }
+                else
+                {
+                    if (BattleEventManager.Current.characters[0].IsDead)
+                        target = 0;
+                    else
+                        target = 1;
+                }
+            }
             Debug.Log("Player " + playerId + " attacks player " + target);
             BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(target));
         }
