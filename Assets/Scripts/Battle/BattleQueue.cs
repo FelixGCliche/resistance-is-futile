@@ -12,9 +12,10 @@ namespace Battle
       battleQueue = new Queue<Character>();
       var queueOrder = characters.OrderByDescending(c => c.Stats.Speed);
 
-      foreach (var character in characters)
+      foreach (var character in queueOrder)
       {
-        battleQueue.Enqueue(character);
+        if (!character.IsDead)
+          battleQueue.Enqueue(character);
       }
     }
 
@@ -24,6 +25,8 @@ namespace Battle
 
       if (!character.IsDead)
         battleQueue.Enqueue(character);
+      
+      BattleEventManager.Current.VerifyBattleEnd();
     }
 
     public Character GetCurrentCharacter()
