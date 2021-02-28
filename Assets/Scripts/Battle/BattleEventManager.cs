@@ -15,8 +15,6 @@ namespace Battle
         [SerializeField] [Range(0.0f, 1.0f)]
         private float battleExperienceMultiplier = 0.1f;
         
-        //To remove once we have a factory
-        [SerializeField] private Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
         
         private BattleQueue battleQueue;
@@ -55,8 +53,45 @@ namespace Battle
 
         public void OnAttack(Attack attack)
         {
-            characters[attack.Target].OnDefend(attack, IsCriticalHit());
-            //onAttack?.Invoke(attack, IsCriticalHit());
+            switch (attack.AttackType)
+            {
+                case AttackType.SINGLE_TARGET:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.AOE:
+                    if (attack.Target < 3)
+                    {
+                        for (int i = 0; i < 3; i++)
+                        {
+                            characters[i].OnDefend(attack, IsCriticalHit());
+                        }
+                    }
+                    else
+                    {
+                        for (int i = 3; i < 6; i++)
+                        {
+                            characters[i].OnDefend(attack, IsCriticalHit());
+                        }
+                    }
+                    break;
+                case AttackType.SPLASH:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 0 && attack.Target != 3)
+                        characters[attack.Target-1].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 2 && attack.Target != 5)
+                        characters[attack.Target+1].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.SPLASH_UP:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 0 && attack.Target != 3)
+                        characters[attack.Target-1].OnDefend(attack, IsCriticalHit());
+                    break;
+                case AttackType.SPLASH_DOWN:
+                    characters[attack.Target].OnDefend(attack, IsCriticalHit());
+                    if (attack.Target != 2 && attack.Target != 5)
+                        characters[attack.Target+1].OnDefend(attack, IsCriticalHit());
+                    break;
+            }
             StartCoroutine(WaitForAttackToEnd());
         }
 
