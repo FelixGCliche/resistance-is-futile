@@ -6,39 +6,30 @@ namespace Factory
 {
   public class CharacterFactory : MonoBehaviour
   {
-    public static Character CreateCharacterByType(CharacterType characterType, int id)
+    public static Character CreateCharacterByType(CharacterType characterType)
     {
-      Character character;
-      
-      switch (characterType)
+      return characterType switch
       {
-        case CharacterType.FLYING_EYE:
-          character = Instantiate(CharacterPrefabs.FLYING_EYE, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        case CharacterType.GOBLIN:
-          character = Instantiate(CharacterPrefabs.GOBLIN, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        case CharacterType.HUNTRESS:
-          character = Instantiate(CharacterPrefabs.HUNTRESS, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        case CharacterType.SKELETON:
-          character = Instantiate(CharacterPrefabs.SKELETON, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        case CharacterType.WARRIOR:
-          character = Instantiate(CharacterPrefabs.WARRIOR, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        case CharacterType.WIZARD:
-          character = Instantiate(CharacterPrefabs.WIZARD, CharacterPosition.Positions[id], Quaternion.identity);
-          character.PlayerId = id;
-          return character;
-        default:
-          return null;
-      }
+        CharacterType.FLYING_EYE => 
+          Instantiate(CharacterPrefabs.FLYING_EYE, CharacterPosition.Positions[0],
+          Quaternion.identity),
+        CharacterType.GOBLIN => 
+          Instantiate(CharacterPrefabs.GOBLIN, CharacterPosition.Positions[1],
+          Quaternion.identity),
+        CharacterType.HUNTRESS => 
+          Instantiate(CharacterPrefabs.HUNTRESS, CharacterPosition.Positions[2],
+          Quaternion.identity),
+        CharacterType.SKELETON => 
+          Instantiate(CharacterPrefabs.SKELETON, CharacterPosition.Positions[3],
+          Quaternion.identity),
+        CharacterType.WARRIOR => 
+          Instantiate(CharacterPrefabs.WARRIOR, CharacterPosition.Positions[4],
+          Quaternion.identity),
+        CharacterType.WIZARD => 
+          Instantiate(CharacterPrefabs.WIZARD, CharacterPosition.Positions[5],
+          Quaternion.identity),
+        _ => null
+      };
     }
   }
 }

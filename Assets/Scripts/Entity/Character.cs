@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Battle;
 using Equipment;
@@ -19,8 +18,6 @@ namespace Entity
     public CharacterStats Stats => stats;
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
     public SpriteRenderer SpriteRenderer => spriteRenderer;
-
-    public int PlayerId { get; set; }
 
     public bool IsDead => stats.IsDead;
 

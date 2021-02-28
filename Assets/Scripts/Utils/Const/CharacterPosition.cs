@@ -4,7 +4,7 @@ namespace Utils.Const
 {
   public struct CharacterPosition
   {
-    public static Vector3[] Positions = new[]
+    public static Vector3[] Positions =
     {
       // Player top
       new Vector3(-5, -2.5f, 0),

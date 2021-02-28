@@ -33,8 +33,10 @@ namespace Battle
 
     private void Awake()
     {
-      Current = this;
       characters = new Character[6];
+      
+      Current = this;
+      
       isWaitingBetweenAttacks = false;
       StartCoroutine(WaitForCharacterCreation());
     }
@@ -42,7 +44,7 @@ namespace Battle
     private IEnumerator WaitForCharacterCreation()
     {
       for (int i = 0; i < characters.Length; i++)
-        characters[i] = CharacterFactory.CreateCharacterByType((CharacterType) i, i);
+        characters[i] = CharacterFactory.CreateCharacterByType((CharacterType) i);
 
       yield return new WaitUntil(() => characters[0] != null &&
                                        characters[1] != null &&

@@ -14,6 +14,8 @@ namespace UI
     {
       character = GetComponentInParent<Character>();
       canvas = GetComponent<Canvas>();
+      
+      canvas.transform.position += Vector3.up * 0.9f;
     }
   }
 }
