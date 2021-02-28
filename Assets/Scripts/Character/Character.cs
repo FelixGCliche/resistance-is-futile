@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
     public bool IsDead => stats.IsDead;
 
-    public Character(CharacterStats stats, CharacterEquipementManager currentEquipement)
+    public void SetStatsAndEquipment(CharacterStats stats, CharacterEquipementManager currentEquipement)
     {
         this.stats = stats;
         this.currentEquipement = currentEquipement;

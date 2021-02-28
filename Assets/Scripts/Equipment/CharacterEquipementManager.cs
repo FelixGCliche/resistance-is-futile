@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Equipment
 {
-  public class CharacterEquipementManager : MonoBehaviour
+  public class CharacterEquipementManager
   {
     private Equipement helmet;
     private Equipement chestPiece;
