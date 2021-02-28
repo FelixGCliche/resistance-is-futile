@@ -144,7 +144,11 @@ namespace Battle
             Equipement[] drops = new Equipement[3];
             for (int i = 0; i < 3; i++)
             {
-                drops[i] = EquipementFactory.CreateNewEquipement(level, (EquipementType) Random.Range(0, 7));
+                EquipementType type = (EquipementType) Random.Range(0, 7);
+                if (type == EquipementType.WEAPON)
+                    drops[i] = WeaponFactory.CreateNewWeapon(level);
+                else
+                    drops[i] = EquipementFactory.CreateNewEquipement(level, type);
             }
 
             for (int i = 0; i < 3; i++)
@@ -157,28 +161,19 @@ namespace Battle
                     if (Input.GetKeyDown(KeyCode.Alpha1))
                     {
                         Debug.Log("Equipped on player 0");
-                        if (drops[i].Type == EquipementType.WEAPON)
-                            characters[0].CurrentEquipement.SwapWeapon((Weapon)drops[i]);
-                        else
-                            characters[0].CurrentEquipement.SwapEquipement(drops[i]);
+                        characters[0].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
                     else if (Input.GetKeyDown(KeyCode.Alpha2))
                     {
                         Debug.Log("Equipped on player 1");
-                        if (drops[i].Type == EquipementType.WEAPON)
-                            characters[0].CurrentEquipement.SwapWeapon((Weapon)drops[i]);
-                        else
-                            characters[1].CurrentEquipement.SwapEquipement(drops[i]);
+                        characters[1].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
                     else if (Input.GetKeyDown(KeyCode.Alpha3))
                     {
                         Debug.Log("Equipped on player 2");
-                        if (drops[i].Type == EquipementType.WEAPON)
-                            characters[0].CurrentEquipement.SwapWeapon((Weapon)drops[i]);
-                        else
-                            characters[2].CurrentEquipement.SwapEquipement(drops[i]);
+                        characters[2].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
                     else if (Input.GetKeyDown(KeyCode.Alpha4))
