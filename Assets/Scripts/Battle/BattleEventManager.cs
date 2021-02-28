@@ -143,7 +143,7 @@ namespace Battle
 
         private void EndGame()
         {
-            //End game
+            DeathScreen.Current.ActivateDeathScreen();
         }
 
         private bool IsCriticalHit()
