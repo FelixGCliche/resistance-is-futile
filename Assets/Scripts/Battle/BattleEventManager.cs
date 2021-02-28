@@ -21,7 +21,7 @@ namespace Battle
         private BattleQueue battleQueue;
         private bool isWaitingBetweenAttacks;
         private int experience = 0;
-        private int level = 0;
+        private int level = 1;
 
         public static BattleEventManager Current;
     
