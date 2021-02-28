@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Battle;
 using Equipment;
@@ -14,6 +15,11 @@ public class Character : MonoBehaviour
     public CharacterStats Stats => stats;
     public CharacterEquipementManager CurrentEquipement => currentEquipement;
     public bool IsDead => stats.IsDead;
+
+    private void Start()
+    {
+        BattleEventManager.Current.characters[playerId] = this;
+    }
 
     public void SetStatsAndEquipment(CharacterStats stats, CharacterEquipementManager currentEquipement)
     {

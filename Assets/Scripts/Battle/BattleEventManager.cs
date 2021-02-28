@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Equipment;
 using Factory;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -36,19 +37,30 @@ namespace Battle
         {
             Current = this;
             characters = new Character[6];
+            isWaitingBetweenAttacks = false;
+            StartCoroutine(WaitForCharacterCreation());
+        }
+
+        private IEnumerator WaitForCharacterCreation()
+        {
+            yield return new WaitUntil(() => characters[0] != null && 
+                                         characters[1] != null && 
+                                         characters[2] != null &&
+                                         characters[3] != null && 
+                                         characters[4] != null && 
+                                         characters[5] != null);
             CreateCharacters();
             NewBattle();
-            isWaitingBetweenAttacks = false;
         }
 
         private void CreateCharacters()
         {
-            characters[0] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WARRIOR);
-            characters[0].playerId = 0;
-            characters[1] = CharacterFactory.CreateStartingCharacterByType(CharacterType.HUNTRESS);
-            characters[1].playerId = 1;
-            characters[2] = CharacterFactory.CreateStartingCharacterByType(CharacterType.WIZARD);
-            characters[2].playerId = 2;
+            characters[0].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.WIZARD), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.WIZARD)); 
+            characters[1].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.WARRIOR), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.WARRIOR)); 
+            characters[2].SetStatsAndEquipment(StatsFactory.CreateStartingCharacterStatsByType(CharacterType.HUNTRESS), 
+                CharacterEquipementFactory.CreateStartingCharacterEquipementByType(CharacterType.HUNTRESS)); 
         }
 
         public void OnAttack(Attack attack)
@@ -106,8 +118,8 @@ namespace Battle
         {
             for (int i = 3; i < 6; i++)
             {
-                characters[i] = CharacterFactory.CreateEnemy(1);
-                characters[i].playerId = i;
+                characters[i].SetStatsAndEquipment(StatsFactory.CreateEnemyStats(level),
+                    CharacterEquipementFactory.CreateEnemyEquipement(level));
             }
             battleQueue = new BattleQueue(characters);
             StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
