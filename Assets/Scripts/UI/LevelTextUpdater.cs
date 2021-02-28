@@ -16,7 +16,7 @@ namespace UI
 
     private void Update()
     {
-      levelText.text = String.Format("{0} LV", BattleEventManager.Current.Level);
+      levelText.text = String.Format("LV: {0}", BattleEventManager.Current.Level);
     }
   }
 }
