@@ -114,26 +114,64 @@ namespace Battle
       StartCoroutine(WaitForAttackToEnd());
     }
 
-    private IEnumerator WaitForAttackToEnd()
-    {
-      yield return new WaitForSeconds(timeBetweenAttackInSeconds);
-      battleQueue.EndTurn();
-      Character currentAttacker = battleQueue.GetCurrentCharacter();
-      if (currentAttacker != null)
-        StartCoroutine(currentAttacker.Attack());
-    }
+            battleQueue = new BattleQueue(characters);
+            StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
+        }
 
-    private void NewBattle()
-    {
-      for (int i = 3; i < 6; i++)
-      {
-        characters[i].SetStatsAndEquipment(StatsFactory.CreateEnemyStats(level),
-          CharacterEquipementFactory.CreateEnemyEquipement(level));
-      }
+        public void VerifyBattleEnd()
+        {
+            if (characters[0].IsDead && characters[1].IsDead && characters[2].IsDead)
+                EndGame();
+            else if (characters[3].IsDead && characters[4].IsDead && characters[5].IsDead)
+                StartCoroutine(EndBattle());
+        }
 
-      battleQueue = new BattleQueue(characters);
-      StartCoroutine(battleQueue.GetCurrentCharacter().Attack());
-    }
+        private IEnumerator EndBattle()
+        {
+            battleQueue.StopQueue();
+            GainExperience();
+            
+            Equipement[] drops = new Equipement[3];
+            for (int i = 0; i < 3; i++)
+            {
+                EquipementType type = (EquipementType) Random.Range(0, 7);
+                if (type == EquipementType.WEAPON)
+                    drops[i] = WeaponFactory.CreateNewWeapon(level);
+                else
+                    drops[i] = EquipementFactory.CreateNewEquipement(level, type);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Debug.Log("What do you want to do with : " + drops[i].Type);
+                yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Alpha1) ||
+                                                 Input.GetKeyDown(KeyCode.Alpha2) ||
+                                                 Input.GetKeyDown(KeyCode.Alpha3) ||
+                                                 Input.GetKeyDown(KeyCode.Alpha4));
+                    if (Input.GetKeyDown(KeyCode.Alpha1))
+                    {
+                        Debug.Log("Equipped on player 0");
+                        characters[0].CurrentEquipement.SwapEquipement(drops[i]);
+                        yield return new WaitForSeconds(1f);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
+                    {
+                        Debug.Log("Equipped on player 1");
+                        characters[1].CurrentEquipement.SwapEquipement(drops[i]);
+                        yield return new WaitForSeconds(1f);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
+                    {
+                        Debug.Log("Equipped on player 2");
+                        characters[2].CurrentEquipement.SwapEquipement(drops[i]);
+                        yield return new WaitForSeconds(1f);
+                    }
+                    else if (Input.GetKeyDown(KeyCode.Alpha4))
+                    {
+                        Debug.Log("Equippement discarded");
+                        yield return new WaitForSeconds(1f);
+                    }
+            }
 
     public void VerifyBattleEnd()
     {

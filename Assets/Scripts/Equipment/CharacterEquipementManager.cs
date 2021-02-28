@@ -72,13 +72,11 @@ namespace Equipment
           ring = newEquippable;
           UpdateBoosts();
           break;
+        case EquipementType.WEAPON:
+          weapon = (Weapon)newEquippable;
+          UpdateBoosts();
+          break;
       }
-    }
-
-    public void SwapWeapon(Weapon weapon)
-    {
-      this.weapon = weapon;
-      UpdateBoosts();
     }
 
     private void UpdateBoosts()

@@ -29,8 +29,8 @@ namespace Stats
         this.physicalArmor = physicalArmor;
         this.magicArmor = magicArmor;
         this.speed = speed;
-        this.dexterity = dexterity;
         this.strength = strength;
+        this.dexterity = dexterity;
         this.intelligence = intelligence;
         this.criticalChance = criticalChance;
         this.dodgeChance = dodgeChance;
