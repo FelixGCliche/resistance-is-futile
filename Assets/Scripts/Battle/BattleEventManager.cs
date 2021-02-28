@@ -12,8 +12,7 @@ namespace Battle
         [SerializeField] [Min(0)] private int levelUpMultiplier = 100;
         [SerializeField] [Min(0)] private int baseExperienceGain = 100;
         [SerializeField] [Range(0.0f, 1.0f)] private float battleExperienceMultiplier = 0.1f;
-
-        [SerializeField] private float timeBetweenAttackInSeconds = 2f;
+        [SerializeField] private float timeBetweenAttackInSeconds = 1f;
 
         private BattleQueue battleQueue;
         private bool isWaitingBetweenAttacks;
@@ -164,7 +163,7 @@ namespace Battle
                             characters[0].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha2))
+                    else if (Input.GetKeyDown(KeyCode.Alpha2))
                     {
                         Debug.Log("Equipped on player 1");
                         if (drops[i].Type == EquipementType.WEAPON)
@@ -173,7 +172,7 @@ namespace Battle
                             characters[1].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha3))
+                    else if (Input.GetKeyDown(KeyCode.Alpha3))
                     {
                         Debug.Log("Equipped on player 2");
                         if (drops[i].Type == EquipementType.WEAPON)
@@ -182,7 +181,7 @@ namespace Battle
                             characters[2].CurrentEquipement.SwapEquipement(drops[i]);
                         yield return new WaitForSeconds(1f);
                     }
-                    if (Input.GetKeyDown(KeyCode.Alpha4))
+                    else if (Input.GetKeyDown(KeyCode.Alpha4))
                     {
                         Debug.Log("Equippement discarded");
                         yield return new WaitForSeconds(1f);

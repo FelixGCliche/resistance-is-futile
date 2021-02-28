@@ -33,30 +33,23 @@ public class Character : MonoBehaviour
     {
         if (playerId >= 0 && playerId < 3)
         {
-            while (true)
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Alpha1) ||
+                                             Input.GetKeyDown(KeyCode.Alpha2) ||
+                                             Input.GetKeyDown(KeyCode.Alpha3));
+            if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    Debug.Log("Player " + playerId + " attacks player " + 3);
-                    BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(3));
-                    break;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    Debug.Log("Player " + playerId + " attacks player " + 4);
-                    BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(4));
-                    break;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Alpha3))
-                {
-                    Debug.Log("Player " + playerId + " attacks player " + 5);
-                    BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(5));
-                    break;
-                }
-
-                yield return new WaitForSeconds(0.01f);
+                Debug.Log("Player " + playerId + " attacks player " + 3);
+                BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(3));
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                Debug.Log("Player " + playerId + " attacks player " + 4);
+                BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(4));
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                Debug.Log("Player " + playerId + " attacks player " + 5);
+                BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(5));
             }
         }
         else
@@ -86,9 +79,11 @@ public class Character : MonoBehaviour
                         target = 1;
                 }
             }
+
             Debug.Log("Player " + playerId + " attacks player " + target);
             BattleEventManager.Current.OnAttack(currentEquipement.Weapon.GetAttack(target));
         }
+
         animator.Play("Base Layer.Attack", 0, 0);
     }
 
@@ -106,9 +101,9 @@ public class Character : MonoBehaviour
     {
         int totalDamage = 0;
 
-    if (IsHit())
-    {
-      totalDamage = Mathf.CeilToInt(attack.DamageValue * GetDamageStatMultiplier(attack.WeaponType));
+        if (IsHit())
+        {
+            totalDamage = Mathf.CeilToInt(attack.DamageValue * GetDamageStatMultiplier(attack.WeaponType));
 
             if (isCriticalHit)
                 totalDamage *= 2;
@@ -118,28 +113,29 @@ public class Character : MonoBehaviour
             else if (attack.DamageType == DamageType.MAGIC)
                 totalDamage -= stats.MagicArmor;
         }
+
         animator.Play("Base Layer.Hit", 0, 0);
         return totalDamage;
     }
 
-  private bool IsHit()
-  {
-    return Random.Range(0.0f, 100.0f) > stats.DodgeChance;
-    // Mettre event rétroaction "Evade"
-  }
-
-  private float GetDamageStatMultiplier(WeaponType weaponType)
-  {
-    switch (weaponType)
+    private bool IsHit()
     {
-      case WeaponType.INTELLIGENCE:
-        return 1.0f + (float)stats.Intelligence / 100;
-      case WeaponType.STRENGTH:
-        return 1.0f+ (float)stats.Strength / 100;
-      case WeaponType.DEXTERITY:
-        return 1.0f+ (float)stats.Dexterity / 100;
+        return Random.Range(0.0f, 100.0f) > stats.DodgeChance;
+        // Mettre event rétroaction "Evade"
     }
 
-    return 1.0f;
-  }
+    private float GetDamageStatMultiplier(WeaponType weaponType)
+    {
+        switch (weaponType)
+        {
+            case WeaponType.INTELLIGENCE:
+                return 1.0f + (float) stats.Intelligence / 100;
+            case WeaponType.STRENGTH:
+                return 1.0f + (float) stats.Strength / 100;
+            case WeaponType.DEXTERITY:
+                return 1.0f + (float) stats.Dexterity / 100;
+        }
+
+        return 1.0f;
+    }
 }
