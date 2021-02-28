@@ -446,6 +446,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5090384101894160286}
     m_Modifications:
+    - target: {fileID: 8698805809308371061, guid: 468fcd92323dfca4c9fe7fed592a073b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4460842322551915663, guid: 0d5f32deb079d30468c247c231c0e27b, type: 3}
     - target: {fileID: 8698805809487888693, guid: 468fcd92323dfca4c9fe7fed592a073b, type: 3}
       propertyPath: m_Name
       value: AttackUI
@@ -534,6 +538,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8698805809760490990, guid: 468fcd92323dfca4c9fe7fed592a073b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4460842322551915663, guid: 0d5f32deb079d30468c247c231c0e27b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 468fcd92323dfca4c9fe7fed592a073b, type: 3}
 --- !u!224 &618864002694863547 stripped
