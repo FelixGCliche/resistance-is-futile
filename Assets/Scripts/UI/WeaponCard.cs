@@ -21,6 +21,7 @@ namespace UI
         private const string criticalChanceText = "Critical chance: ";
         private const string dodgeChanceText = "Dodge chance: ";
         
+        [SerializeField] private TextMeshProUGUI equipmentName;
         [SerializeField] private TextMeshProUGUI baseDamage;
         [SerializeField] private TextMeshProUGUI damageType;
         [SerializeField] private TextMeshProUGUI attackType;
@@ -44,6 +45,7 @@ namespace UI
             {
                 newEquipement = value;
                 setNewEquipmentValues();
+                equipmentName.text = newEquipement.Type.ToString();
             } 
         }
         
@@ -53,6 +55,7 @@ namespace UI
             {
                 newWeapon = value;
                 setNewWeaponValues();
+                equipmentName.text = "Weapon";
             } 
         }
 
