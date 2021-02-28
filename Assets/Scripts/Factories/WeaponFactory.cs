@@ -15,7 +15,7 @@ namespace Factory
 
         public static Weapon CreateStartingWeapon(WeaponType weaponType)
         {
-            return new Weapon(5, GetDamageType(), weaponType, AttackType.AOE, EquipementType.WEAPON, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            return new Weapon(5, GetDamageType(), weaponType, AttackType.SINGLE_TARGET, EquipementType.WEAPON, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
         private static DamageType GetDamageType()
