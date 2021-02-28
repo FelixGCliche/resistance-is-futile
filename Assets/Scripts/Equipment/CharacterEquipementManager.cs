@@ -31,6 +31,12 @@ namespace Equipment
     public int EquipementMagicArmorBoost => equipementMagicArmorBoost;
 
     public Weapon Weapon => weapon;
+    public Equipement Helmet => helmet;
+    public Equipement ChestPiece => chestPiece;
+    public Equipement Greaves => greaves;
+    public Equipement Boots => boots;
+    public Equipement Necklace => necklace;
+    public Equipement Ring => ring;
 
     public CharacterEquipementManager(Equipement helmet, Equipement chestPiece, Equipement greaves, Equipement boots, Equipement necklace, Equipement ring, Weapon weapon)
     {
