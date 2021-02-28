@@ -86,7 +86,7 @@ public class Character : MonoBehaviour
 
   private bool IsHit()
   {
-    return Random.Range(0.0f, 100.0f) <= stats.DodgeChance;
+    return Random.Range(0.0f, 100.0f) > stats.DodgeChance;
     // Mettre event rétroaction "Evade"
   }
 
