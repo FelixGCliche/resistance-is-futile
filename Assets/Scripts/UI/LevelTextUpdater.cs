@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace UI
 {
-  public class LevelHudController : MonoBehaviour
+  public class LevelTextUpdater : MonoBehaviour
   {
     private TextMeshProUGUI levelText;
 
@@ -16,7 +16,7 @@ namespace UI
 
     private void Update()
     {
-      levelText.text = String.Format("LV: {0}", BattleEventManager.Current.Level);
+      levelText.text = String.Format("{0} LV", BattleEventManager.Current.Level);
     }
   }
 }
