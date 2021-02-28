@@ -1,26 +1,41 @@
+using Entity;
 using UnityEngine;
 using Utils.Const;
 
 namespace Factory
 {
-  public class CharacterFactory: MonoBehaviour
+  public class CharacterFactory : MonoBehaviour
   {
     public static Character CreateCharacterByType(CharacterType characterType, int id)
     {
+      Character character;
+      
       switch (characterType)
       {
         case CharacterType.FLYING_EYE:
-          return Instantiate(CharacterPrefabs.FLYING_EYE, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.FLYING_EYE, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         case CharacterType.GOBLIN:
-          return Instantiate(CharacterPrefabs.GOBLIN, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.GOBLIN, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         case CharacterType.HUNTRESS:
-          return Instantiate(CharacterPrefabs.HUNTRESS, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.HUNTRESS, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         case CharacterType.SKELETON:
-          return Instantiate(CharacterPrefabs.SKELETON, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.SKELETON, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         case CharacterType.WARRIOR:
-          return Instantiate(CharacterPrefabs.WARRIOR, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.WARRIOR, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         case CharacterType.WIZARD:
-          return Instantiate(CharacterPrefabs.WIZARD, CharacterPosition.Positions[id], Quaternion.identity);
+          character = Instantiate(CharacterPrefabs.WIZARD, CharacterPosition.Positions[id], Quaternion.identity);
+          character.PlayerId = id;
+          return character;
         default:
           return null;
       }

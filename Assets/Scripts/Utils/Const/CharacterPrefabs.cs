@@ -1,3 +1,4 @@
+using Entity;
 using UnityEngine;
 
 namespace Utils.Const
