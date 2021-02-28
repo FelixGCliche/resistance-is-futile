@@ -150,21 +150,24 @@ public class Character : MonoBehaviour
   private void UpdateAttackPanel()
   {
       GameObject attackPanel = GameObject.FindWithTag("AttackPanel");
-      attackPanel.GetComponentInChildren<TextMeshProUGUI>().text = (currentEquipement.Weapon.BaseDamage + " DMG →");
-      Image targetTop = GameObject.FindWithTag("TargetTop").GetComponent<Image>();
-      Image targetMiddle = GameObject.FindWithTag("TargetMiddle").GetComponent<Image>();
-      Image targetBottom = GameObject.FindWithTag("TargetBottom").GetComponent<Image>();
-      if (currentEquipement.Weapon.AttackType == AttackType.SINGLE_TARGET)
+      if (attackPanel != null)
       {
-          targetMiddle.color = Color.white;
-          targetTop.color = Color.grey;
-          targetBottom.color = Color.grey;
-      }
-      else if (currentEquipement.Weapon.AttackType == AttackType.AOE)
-      {
-          targetMiddle.color = Color.white;
-          targetTop.color = Color.white;
-          targetBottom.color = Color.white;
+          attackPanel.GetComponentInChildren<TextMeshProUGUI>().text = (currentEquipement.Weapon.BaseDamage + " DMG →");
+          Image targetTop = GameObject.FindWithTag("TargetTop").GetComponent<Image>();
+          Image targetMiddle = GameObject.FindWithTag("TargetMiddle").GetComponent<Image>();
+          Image targetBottom = GameObject.FindWithTag("TargetBottom").GetComponent<Image>();
+          if (currentEquipement.Weapon.AttackType == AttackType.SINGLE_TARGET)
+          {
+              targetMiddle.color = Color.white;
+              targetTop.color = Color.grey;
+              targetBottom.color = Color.grey;
+          }
+          else if (currentEquipement.Weapon.AttackType == AttackType.AOE)
+          {
+              targetMiddle.color = Color.white;
+              targetTop.color = Color.white;
+              targetBottom.color = Color.white;
+          }
       }
   }
 }
