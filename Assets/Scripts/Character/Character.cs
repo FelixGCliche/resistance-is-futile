@@ -95,6 +95,11 @@ public class Character : MonoBehaviour
     public void OnDefend(Attack attack, bool isCriticalHit)
     {
         stats.Hurt(GetTotalDamage(attack, isCriticalHit));
+        if (stats.IsDead)
+        {
+            Debug.Log("Is dead");
+            animator.Play("Base Layer.Death", 0, 0);
+        }
     }
 
     private int GetTotalDamage(Attack attack, bool isCriticalHit)
