@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 namespace Stats
 {
-  public class CharacterStats : MonoBehaviour
+  public class CharacterStats
   {
     [SerializeField] private int health = 1;
     [SerializeField] private int maxHealth = 1;

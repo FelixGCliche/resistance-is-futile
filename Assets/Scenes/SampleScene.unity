@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
+      propertyPath: characterId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8646121890056862080, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_Name
       value: EnemyHealthBar1
@@ -724,7 +728,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseEnemy: {fileID: 7948428883476133038, guid: c6027a9da8aa5b746a5423c3d7d1ba7c, type: 3}
-  timeBetweenAttackInSeconds: 2
+  timeBetweenAttackInSeconds: 0
   characters: []
 --- !u!4 &830123223
 Transform:
@@ -979,6 +983,10 @@ PrefabInstance:
     - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: character
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
+      propertyPath: characterId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8646121890056862080, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_Name
@@ -1368,6 +1376,10 @@ PrefabInstance:
     - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: character
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
+      propertyPath: characterId
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8646121890056862080, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_Name
@@ -1767,6 +1779,10 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
+      propertyPath: characterId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8646121890056862080, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_Name
       value: PlayerHealthBar1
@@ -1923,6 +1939,10 @@ PrefabInstance:
     - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: character
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7125458689222010954, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
+      propertyPath: characterId
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8646121890056862080, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_Name

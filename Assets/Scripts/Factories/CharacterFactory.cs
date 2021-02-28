@@ -1,6 +1,8 @@
+using System;
 using Equipment;
 using Stats;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Factory
 {
@@ -62,7 +64,10 @@ namespace Factory
             EquipementFactory.CreateStartingEquipementWithType(EquipementType.NECKLACE),
             EquipementFactory.CreateStartingEquipementWithType(EquipementType.RING),
             weapon);
-        return new Character(characterStats, characterEquipementManager);
+        GameObject characterGameObject = new GameObject("Character", typeof(Character));
+        Character character = characterGameObject.GetComponent<Character>();
+        character.GetComponent<Character>().SetStatsAndEquipment(characterStats, characterEquipementManager);
+        return character;
     }
 
     public static Character CreateEnemy(int level)
@@ -99,7 +104,10 @@ namespace Factory
             EquipementFactory.CreateNewEquipement(level, EquipementType.NECKLACE),
             EquipementFactory.CreateNewEquipement(level, EquipementType.RING),
             WeaponFactory.CreateNewWeapon(level));
-        return new Character(characterStats, characterEquipementManager);
+        GameObject characterGameObject = new GameObject("Character", typeof(Character));
+        Character character = characterGameObject.GetComponent<Character>();
+        character.GetComponent<Character>().SetStatsAndEquipment(characterStats, characterEquipementManager);
+        return character;
     }
   }
 }
