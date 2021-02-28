@@ -792,20 +792,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8991891412890471701, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_fontSize
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8991891412890471701, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 11400000, guid: 9c758958ece4179478fe4391a31a0b39, type: 2}
     - target: {fileID: 8991891412890471701, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_fontSizeBase
-      value: 24
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8991891412890471701, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+      objectReference: {fileID: 6933801814565109649, guid: 9c758958ece4179478fe4391a31a0b39, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3d339b1baca0964b876021fcf165e6f, type: 3}
 --- !u!224 &7450004199822739296 stripped
