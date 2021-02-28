@@ -8,8 +8,6 @@ namespace Battle
 {
     public class BattleEventManager : MonoBehaviour
     {
-        //To remove once we have a factory
-        [SerializeField] private Character baseEnemy;
         [SerializeField] private float timeBetweenAttackInSeconds = 2f;
     
         public static BattleEventManager Current;
