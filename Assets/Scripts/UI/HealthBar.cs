@@ -1,32 +1,47 @@
-﻿using TMPro;
+﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI
 {
-  public class HealthBar : MonoBehaviour
-  {
-    private CharacterHudController characterHudController;
-    private Slider healthSlider;
-    private TextMeshProUGUI healthText;
-
-    private void Awake()
+    public class HealthBar : MonoBehaviour
     {
-      characterHudController = GetComponentInParent<CharacterHudController>();
-      healthSlider = GetComponent<Slider>();
-      healthText = GetComponentInChildren<TextMeshProUGUI>();
-    }
+        private Character character;
+        private Slider healthSlider;
+        private TextMeshProUGUI healthText;
+        private int maxHealth;
+        private int currentHealth;
 
-    private void Update()
-    {
-      if (characterHudController.Character.Stats != null)
-      {
-        healthSlider.maxValue = characterHudController.Character.Stats.MaxHealth;
+        public Character Character
+        {
+            set => character = value;
+        }
 
-        healthSlider.value = characterHudController.Character.Stats.Health;
-        healthText.text = characterHudController.Character.Stats.Health + " / " +
-                          characterHudController.Character.Stats.MaxHealth;
-      }
+        private void Awake()
+        {
+            healthSlider = GetComponent<Slider>();
+            healthText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
+        void Start()
+        {
+            StartCoroutine(LateStart());
+        }
+
+        private void Update()
+        {
+            healthSlider.value = currentHealth;
+            healthText.text = currentHealth + " / " + maxHealth;
+        }
+
+        private IEnumerator LateStart()
+        {
+            yield return new WaitUntil(() => character != null);
+            currentHealth = character.Stats.Health;
+            maxHealth = character.Stats.MaxHealth;
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
     }
-  }
 }
