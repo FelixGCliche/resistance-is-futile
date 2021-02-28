@@ -150,9 +150,12 @@ namespace Battle
                 else
                     drops[i] = EquipementFactory.CreateNewEquipement(level, type);
             }
-
+            
+            SwitchWeaponMenu.current.ActivateSwitchWeaponMenu();
+            
             for (int i = 0; i < 3; i++)
             {
+                SwitchWeaponMenu.current.GetNewCards(drops[i]);
                 Debug.Log("What do you want to do with : " + drops[i].Type);
                 yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Alpha1) ||
                                                  Input.GetKeyDown(KeyCode.Alpha2) ||
